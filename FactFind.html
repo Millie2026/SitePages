@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fact Find / Investigations</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --teal:        #2a8a8a;
+  --teal-dark:   #1d6666;
+  --teal-deeper: #164f4f;
+  --teal-light:  #e4f4f4;
+  --teal-xlight: #f2fafa;
+  --green-yes:   #2d7a4f;
+  --green-light: #e8f5ed;
+  --red:         #8b2020;
+  --red-light:   #fdf0f0;
+  --amber:       #7a5010;
+  --amber-light: #fdf6e8;
+  --text:        #1a2e2e;
+  --text-mid:    #3d5c5c;
+  --text-light:  #7a9a9a;
+  --border:      #c8e0e0;
+  --white:       #ffffff;
+  --bg:          #f4f7f7;
+  --shadow-sm:   0 1px 4px rgba(26,74,74,0.07);
+  --shadow:      0 3px 14px rgba(26,74,74,0.09);
+}
+body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; padding: 20px 24px 32px; }
+
+/* SHARED */
+.sub-label { font-size: 10px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; display: block; }
+.teal-intro { font-size: 13px; color: var(--text-mid); background: var(--teal-xlight); border-left: 3px solid var(--teal); padding: 10px 14px; border-radius: 0 6px 6px 0; margin-bottom: 16px; line-height: 1.6; }
+
+/* INTRO CARDS */
+.intro-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 14px; }
+.intro-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--teal); border-radius: 7px; padding: 14px 16px; box-shadow: var(--shadow-sm); }
+.intro-card h3 { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
+.intro-card p { font-size: 13px; color: var(--text-mid); line-height: 1.55; }
+
+/* PRINCIPLE */
+.principle { background: var(--white); border: 1px solid var(--border); border-left: 4px solid var(--teal); border-radius: 0 7px 7px 0; padding: 12px 16px; font-size: 13.5px; color: var(--text-mid); line-height: 1.65; margin-bottom: 20px; }
+.principle strong { color: var(--teal-dark); }
+
+/* FLOWCHART */
+.flow-wrap { background: var(--white); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-sm); padding: 18px 18px 0; margin-bottom: 22px; }
+.flow-wrap-title { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 2px; }
+.flow-wrap-sub { font-size: 12px; color: var(--text-light); margin-bottom: 14px; }
+.flow-arrows { display: flex; }
+.fa-step { flex: 1; cursor: pointer; transition: filter 0.15s, transform 0.13s; }
+.fa-step:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.fa-arrow { height: 50px; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 600; color: white; text-align: center; line-height: 1.3; padding: 4px 6px 4px 20px; clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%, 15px 50%); }
+.fa-step:first-child .fa-arrow { clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%); padding-left: 12px; }
+.fac1 .fa-arrow{background:#3a7a8a;} .fac2 .fa-arrow{background:#2e9080;} .fac3 .fa-arrow{background:#28a86a;} .fac4a .fa-arrow{background:#228858;} .fac4b .fa-arrow{background:#1a6644;}
+.fa-step.sel .fa-arrow { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 2px; }
+.flow-nums { display: flex; margin-bottom: 12px; }
+.fn-cell { flex: 1; display: flex; flex-direction: column; align-items: center; padding-top: 6px; cursor: pointer; }
+.fn-dot { width: 8px; height: 8px; border-radius: 50%; margin-bottom: 4px; }
+.fac1 .fn-dot{background:#3a7a8a;} .fac2 .fn-dot{background:#2e9080;} .fac3 .fn-dot{background:#28a86a;} .fac4a .fn-dot{background:#228858;} .fac4b .fn-dot{background:#1a6644;}
+.fn-bubble { color: white; font-size: 12px; font-weight: 700; width: 42px; height: 27px; border-radius: 14px; display: flex; align-items: center; justify-content: center; }
+.fac1 .fn-bubble{background:#4a8a9a;} .fac2 .fn-bubble{background:#3a9a88;} .fac3 .fn-bubble{background:#34aa70;} .fac4a .fn-bubble{background:#2a9060;} .fac4b .fn-bubble{background:#206648;}
+.fa-step.sel .fn-bubble { background: var(--teal-dark); }
+.step-cards { display: flex; border-top: 1px solid var(--border); }
+.step-card { flex: 1; padding: 13px 12px 18px; border-right: 1px solid var(--border); cursor: pointer; transition: background 0.15s; min-width: 0; }
+.step-card:last-child { border-right: none; }
+.step-card:hover { background: var(--teal-xlight); }
+.step-card.sel { background: var(--teal-xlight); }
+.sc-tag { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 3px; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
+.yes-badge { background: var(--green-light); color: var(--green-yes); font-size: 10px; padding: 1px 7px; border-radius: 99px; border: 1px solid #a8d8b8; }
+.no-badge  { background: var(--red-light); color: var(--red); font-size: 10px; padding: 1px 7px; border-radius: 99px; border: 1px solid #f0b8b8; }
+.sc-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+.sc-list { list-style: none; }
+.sc-list li { font-size: 12px; color: var(--text-mid); padding: 3px 0 3px 11px; position: relative; line-height: 1.4; border-bottom: 1px solid var(--teal-xlight); }
+.sc-list li:last-child { border-bottom: none; }
+.sc-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 4px; height: 4px; background: var(--teal); border-radius: 50%; }
+
+/* TAB BUTTONS */
+.tab-buttons { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.tab-btn { background: var(--white); border: 1.5px solid var(--border); border-radius: 9px 9px 0 0; border-bottom: none; padding: 13px 15px; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 12px; transition: background 0.15s, border-color 0.15s; box-shadow: var(--shadow-sm); }
+.tab-btn:hover { background: var(--teal-xlight); border-color: var(--teal); }
+.tab-btn.active { background: var(--teal-dark); border-color: var(--teal-dark); }
+.tb-num { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: var(--teal-light); color: var(--teal-dark); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; transition: background 0.2s, color 0.2s; flex-shrink: 0; }
+.tab-btn.active .tb-num { background: rgba(255,255,255,0.2); color: white; }
+.tb-text strong { display: block; font-size: 13.5px; font-weight: 700; color: var(--text); line-height: 1.25; }
+.tab-btn.active .tb-text strong { color: white; }
+.tb-text span { font-size: 11.5px; color: var(--text-light); }
+.tab-btn.active .tb-text span { color: rgba(255,255,255,0.62); }
+
+/* TAB PANEL */
+.tab-panel-wrap { background: var(--white); border: 1.5px solid var(--border); border-radius: 0 0 10px 10px; border-top: none; box-shadow: var(--shadow); }
+.tab-panel { display: none; }
+.tab-panel.active { display: block; animation: fadeIn 0.18s ease; }
+.tab-inner { padding: 20px 20px 24px; }
+
+/* PLANNING */
+.plan-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px; }
+.plan-box { background: var(--teal-xlight); border: 1px solid var(--border); border-radius: 7px; padding: 13px 15px; }
+.plan-box h4 { font-size: 10.5px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 8px; }
+.plan-box p { font-size: 13px; color: var(--text-mid); line-height: 1.6; margin-bottom: 8px; }
+.plan-box p:last-child { margin-bottom: 0; }
+.plan-list { list-style: none; }
+.plan-list li { font-size: 13px; color: var(--text-mid); padding: 4px 0 4px 12px; position: relative; border-bottom: 1px solid var(--border); line-height: 1.4; }
+.plan-list li:last-child { border-bottom: none; }
+.plan-list li::before { content: ''; position: absolute; left: 0; top: 11px; width: 5px; height: 5px; background: var(--teal); border-radius: 50%; }
+.principle-cards { display: grid; grid-template-columns: repeat(4,1fr); gap: 9px; }
+.pc { background: var(--teal-xlight); border: 1px solid var(--border); border-radius: 7px; padding: 12px 11px; text-align: center; }
+.pc .pc-icon { font-size: 18px; margin-bottom: 5px; }
+.pc strong { display: block; font-size: 12px; font-weight: 700; color: var(--teal-dark); margin-bottom: 3px; }
+.pc span { font-size: 11.5px; color: var(--text-mid); line-height: 1.4; display: block; }
+
+/* QUESTIONING */
+.q-types { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 16px; }
+.qt { border-radius: 7px; padding: 12px 13px; border: 1.5px solid; }
+.qt.open{background:var(--green-light);border-color:#a8d8b8;} .qt.closed{background:var(--teal-xlight);border-color:var(--border);} .qt.avoid{background:var(--red-light);border-color:#f0b8b8;}
+.qt h4 { font-size: 10.5px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 5px; }
+.qt.open h4{color:var(--green-yes);} .qt.closed h4{color:var(--teal-dark);} .qt.avoid h4{color:var(--red);}
+.qt p { font-size: 12.5px; color: var(--text-mid); line-height: 1.45; margin-bottom: 7px; }
+.qt .eg { font-size: 12px; font-style: italic; color: var(--text-light); border-top: 1px solid rgba(0,0,0,0.07); padding-top: 6px; }
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; margin-bottom: 16px; }
+.q-card { border: 1px solid var(--border); border-radius: 7px; overflow: hidden; }
+.q-head { background: var(--teal-dark); color: white; padding: 8px 12px; font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
+.q-item { font-size: 12.5px; color: var(--text-mid); padding: 6px 11px 6px 23px; border-bottom: 1px solid var(--teal-xlight); position: relative; line-height: 1.4; background: white; }
+.q-item:last-child { border-bottom: none; }
+.q-item::before { content: '"'; position: absolute; left: 7px; top: 3px; font-size: 15px; color: var(--teal); line-height: 1; }
+.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 11px; }
+.dd { border-radius: 7px; overflow: hidden; }
+.dd.do{border:1.5px solid #a8d8b8;} .dd.dont{border:1.5px solid #f0b8b8;}
+.dd-head { padding: 7px 13px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.dd.do .dd-head{background:var(--green-light);color:var(--green-yes);} .dd.dont .dd-head{background:var(--red-light);color:var(--red);}
+.dd-item { font-size: 12.5px; color: var(--text-mid); padding: 6px 12px 6px 25px; position: relative; border-bottom: 1px solid var(--teal-xlight); line-height: 1.4; background: white; }
+.dd-item:last-child { border-bottom: none; }
+.dd.do .dd-item::before{content:'✓';position:absolute;left:8px;top:6px;font-size:11px;color:var(--green-yes);font-weight:700;}
+.dd.dont .dd-item::before{content:'✗';position:absolute;left:8px;top:6px;font-size:11px;color:var(--red);font-weight:700;}
+
+/* OUTCOMES */
+.outcomes-banner { background: linear-gradient(135deg, var(--teal-deeper) 0%, #1a5050 100%); border-radius: 9px; padding: 18px 22px; color: white; margin-bottom: 18px; display: flex; gap: 16px; align-items: flex-start; }
+.ob-icon { font-size: 28px; flex-shrink: 0; margin-top: 2px; }
+.ob-text h3 { font-size: 15px; font-weight: 700; margin-bottom: 5px; color: white; }
+.ob-text p { font-size: 13px; color: rgba(255,255,255,0.82); line-height: 1.65; }
+.factors-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 11px; margin-bottom: 16px; }
+.factor-card { background: var(--teal-xlight); border: 1px solid var(--border); border-radius: 8px; padding: 13px 14px; }
+.factor-card .fc-icon { font-size: 18px; margin-bottom: 6px; }
+.factor-card h4 { font-size: 12px; font-weight: 700; color: var(--teal-dark); margin-bottom: 4px; }
+.factor-card p { font-size: 12.5px; color: var(--text-mid); line-height: 1.5; }
+.three-cols { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 11px; }
+.tcol { border-radius: 8px; padding: 14px 15px; border: 1.5px solid; }
+.tcol.same{background:var(--teal-xlight);border-color:var(--border);}
+.tcol.diff{background:var(--amber-light);border-color:#e8c878;}
+.tcol.key{background:var(--green-light);border-color:#a8d8b8;}
+.tcol h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; margin-bottom: 6px; }
+.tcol.same h4{color:var(--teal-dark);} .tcol.diff h4{color:var(--amber);} .tcol.key h4{color:var(--green-yes);}
+.tcol p { font-size: 12.5px; color: var(--text-mid); line-height: 1.55; }
+
+@keyframes fadeIn { from{opacity:0;transform:translateY(4px);} to{opacity:1;transform:translateY(0);} }
+</style>
+</head>
+<body>
+
+<!-- INTRO CARDS -->
+<div class="intro-cards">
+  <div class="intro-card">
+    <h3>What is a fact find?</h3>
+    <p>The first step in addressing concerns — an informal meeting to gather all relevant facts before any decision is made. It is <strong>not</strong> a disciplinary hearing.</p>
+  </div>
+  <div class="intro-card">
+    <h3>Why does it matter?</h3>
+    <p>Failure to follow up concerns could lead to evidence being destroyed and potential tribunal claims. Consistent process protects everyone involved.</p>
+  </div>
+  <div class="intro-card">
+    <h3>When to use it</h3>
+    <p>Potential disciplinary matter, conflict between colleagues, allegations of bullying or harassment, complaint from a service user, or a safeguarding concern.</p>
+  </div>
+</div>
+
+<!-- PRINCIPLE -->
+<div class="principle" style="margin-top:14px;">
+  <strong>Key principle:</strong> The purpose of a fact find is to discover all relevant facts in a fair, reasonable and objective manner. Minor issues do not always require a full investigation — but all fact finds must be documented in writing with expectations set going forward.
+</div>
+
+<!-- FLOWCHART -->
+<div class="flow-wrap">
+  <div class="flow-wrap-title">Fact find / investigation process</div>
+  <div class="flow-wrap-sub">A decision guide — click a stage for detail</div>
+  <div class="flow-arrows">
+    <div class="fa-step fac1 sel" onclick="sel(0)"><div class="fa-arrow">Concern or complaint received</div></div>
+    <div class="fa-step fac2"     onclick="sel(1)"><div class="fa-arrow">Conduct fact find meeting</div></div>
+    <div class="fa-step fac3"     onclick="sel(2)"><div class="fa-arrow">Can it be resolved informally?</div></div>
+    <div class="fa-step fac4a"    onclick="sel(3)"><div class="fa-arrow">Informal resolution</div></div>
+    <div class="fa-step fac4b"    onclick="sel(4)"><div class="fa-arrow">Formal disciplinary route</div></div>
+  </div>
+  <div class="flow-nums">
+    <div class="fn-cell fac1"  onclick="sel(0)"><div class="fn-dot"></div><div class="fn-bubble">1</div></div>
+    <div class="fn-cell fac2"  onclick="sel(1)"><div class="fn-dot"></div><div class="fn-bubble">2</div></div>
+    <div class="fn-cell fac3"  onclick="sel(2)"><div class="fn-dot"></div><div class="fn-bubble">3</div></div>
+    <div class="fn-cell fac4a" onclick="sel(3)"><div class="fn-dot"></div><div class="fn-bubble">4a</div></div>
+    <div class="fn-cell fac4b" onclick="sel(4)"><div class="fn-dot"></div><div class="fn-bubble">4b</div></div>
+  </div>
+  <div class="step-cards">
+    <div class="step-card sel" onclick="sel(0)">
+      <div class="sc-tag">Step 1</div>
+      <div class="sc-title">Concern or complaint received</div>
+      <ul class="sc-list"><li>Complaint from a service user</li><li>Allegation of bullying or harassment</li><li>Concern raised by an employee</li><li>Potential disciplinary matter</li><li>Safeguarding concern</li><li>Consider whether suspension is needed</li></ul>
+    </div>
+    <div class="step-card" onclick="sel(1)">
+      <div class="sc-tag">Step 2</div>
+      <div class="sc-title">Conduct fact find meeting</div>
+      <ul class="sc-list"><li>Contact the individual informally</li><li>Inform of right to a companion</li><li>Prepare relevant questions in advance</li><li>Take detailed notes throughout</li><li>Interview any witnesses separately</li></ul>
+    </div>
+    <div class="step-card" onclick="sel(2)">
+      <div class="sc-tag">Step 3</div>
+      <div class="sc-title">Can it be resolved informally?</div>
+      <ul class="sc-list"><li>Review all facts gathered</li><li>Consider nature and severity</li><li>Is training or support sufficient?</li><li>First occurrence or a pattern?</li><li>Contact HR if support is needed</li></ul>
+    </div>
+    <div class="step-card" onclick="sel(3)">
+      <div class="sc-tag">Step 4a — <span class="yes-badge">Yes</span></div>
+      <div class="sc-title">Informal resolution</div>
+      <ul class="sc-list"><li>Letter of concern or documented discussion</li><li>Coaching or support</li><li>Further training or shadowing</li><li>Performance support plan</li><li>No further action if unfounded</li></ul>
+    </div>
+    <div class="step-card" onclick="sel(4)">
+      <div class="sc-tag">Step 4b — <span class="no-badge">No</span></div>
+      <div class="sc-title">Formal disciplinary route</div>
+      <ul class="sc-list"><li>Complete investigation report</li><li>Type up and sign all notes</li><li>Formal hearing invitation issued</li><li>Follow disciplinary process guide</li></ul>
+    </div>
+  </div>
+</div>
+
+<!-- TAB BUTTONS -->
+<div class="tab-buttons">
+  <button class="tab-btn active" onclick="showTab('plan',this)">
+    <div class="tb-num">1</div>
+    <div class="tb-text"><strong>Planning &amp; Preparation</strong><span>Before any meeting takes place</span></div>
+  </button>
+  <button class="tab-btn" onclick="showTab('qs',this)">
+    <div class="tb-num">2</div>
+    <div class="tb-text"><strong>Questioning Techniques</strong><span>How to get accurate information</span></div>
+  </button>
+  <button class="tab-btn" onclick="showTab('gp',this)">
+    <div class="tb-num">3</div>
+    <div class="tb-text"><strong>Outcomes &amp; Good Practice</strong><span>Consistent process, not identical outcomes</span></div>
+  </button>
+</div>
+
+<div class="tab-panel-wrap">
+
+  <!-- TAB 1 -->
+  <div class="tab-panel active" id="tab-plan">
+    <div class="tab-inner">
+      <div class="teal-intro">Before conducting a fact find or investigation, a written plan helps you stay focused and objective. It does not need to be lengthy — it needs to be clear.</div>
+      <div class="plan-grid">
+        <div class="plan-box">
+          <h4>Your plan should cover</h4>
+          <ul class="plan-list">
+            <li>Outline of the issue or concern</li>
+            <li>Policies and procedures to review</li>
+            <li>Issues that need to be explored or clarified</li>
+            <li>Sources of evidence (care notes, PASS, MAR charts, logs)</li>
+            <li>Persons to be interviewed and proposed order</li>
+            <li>Date, time, location and notetaker arrangements</li>
+            <li>Any reasonable adjustments needed</li>
+            <li>Rota changes if required</li>
+            <li>Persons to supply their own statement</li>
+          </ul>
+        </div>
+        <div class="plan-box">
+          <h4>Who can conduct a fact find?</h4>
+          <p>A fact find can be conducted by <strong style="color:var(--text)">any appropriate person</strong> who has no prior involvement in the concern — it does not have to be the individual's line manager.</p>
+          <p>If the concern involves the line manager, a more senior or independent person should be used.</p>
+          <p>The investigator must be <strong style="color:var(--text)">fair, objective and impartial</strong> — avoid anyone with a perceived conflict of interest.</p>
+        </div>
+      </div>
+      <span class="sub-label">Key principles for anyone conducting a fact find</span>
+      <div class="principle-cards">
+        <div class="pc"><div class="pc-icon">⚡</div><strong>Act promptly</strong><span>Don't delay — evidence can be lost quickly</span></div>
+        <div class="pc"><div class="pc-icon">⚖️</div><strong>Be objective</strong><span>Don't assume or draw early conclusions</span></div>
+        <div class="pc"><div class="pc-icon">🔒</div><strong>Confidentiality</strong><span>Don't discuss beyond what is necessary</span></div>
+        <div class="pc"><div class="pc-icon">📋</div><strong>Keep records</strong><span>Document everything in writing throughout</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2 -->
+  <div class="tab-panel" id="tab-qs">
+    <div class="tab-inner">
+      <div class="q-types">
+        <div class="qt open"><h4>✓ Open questions</h4><p>Encourage free recall. Start with <strong>Why, How, What, Describe.</strong> These give you the most information.</p><div class="eg">"Can you tell me about the care call you attended on Friday?"</div></div>
+        <div class="qt closed"><h4>○ Closed questions</h4><p>Used for confirmation — usually a yes or no. Use to pin down specific facts once you have the full account.</p><div class="eg">"Did you attend the care call on Friday?"</div></div>
+        <div class="qt avoid"><h4>✗ Questions to avoid</h4><p>Leading, suggestive or multiple questions can invalidate your findings and be challenged later.</p><div class="eg">"You didn't give the medication, did you?"</div></div>
+      </div>
+      <span class="sub-label">Questions for each stage of the meeting</span>
+      <div class="two-col">
+        <div class="q-card"><div class="q-head">Opening the meeting</div>
+          <div class="q-item">Can you tell me in your own words what happened on [date]?</div>
+          <div class="q-item">Is there anything you'd like to tell me before we start?</div>
+          <div class="q-item">Do you understand this is a fact find, not a disciplinary?</div>
+          <div class="q-item">Are you happy to proceed, or do you need a short break?</div>
+        </div>
+        <div class="q-card"><div class="q-head">Exploring the concern</div>
+          <div class="q-item">What happened next? Walk me through the sequence of events.</div>
+          <div class="q-item">Who else was present? What did they say or do?</div>
+          <div class="q-item">What impact do you think your actions had?</div>
+          <div class="q-item">Is there anything else relevant I haven't asked about?</div>
+        </div>
+        <div class="q-card"><div class="q-head">Probing &amp; mitigating factors</div>
+          <div class="q-item">Were you aware of the relevant policy at the time?</div>
+          <div class="q-item">Is there anything that affected your judgement that day?</div>
+          <div class="q-item">Has anything like this happened before, to your knowledge?</div>
+          <div class="q-item">What would you do differently in the same situation?</div>
+        </div>
+        <div class="q-card"><div class="q-head">Summarising &amp; closing</div>
+          <div class="q-item">Let me summarise the main points — is that accurate?</div>
+          <div class="q-item">Is there anything you'd like to add before we finish?</div>
+          <div class="q-item">Are you happy to review the notes and confirm accuracy?</div>
+          <div class="q-item">Is there anything affecting your wellbeing I should know?</div>
+        </div>
+      </div>
+      <span class="sub-label">When interviewing witnesses</span>
+      <div class="do-dont">
+        <div class="dd do"><div class="dd-head">Do</div>
+          <div class="dd-item">Allow the witness to refer to documents to refresh their memory</div>
+          <div class="dd-item">Pause or adjourn if the witness becomes very upset</div>
+          <div class="dd-item">Record all pertinent facts accurately and thoroughly</div>
+          <div class="dd-item">Remind the witness to keep the matter confidential</div>
+          <div class="dd-item">Be open to answering queries the witness has beforehand</div>
+        </div>
+        <div class="dd dont"><div class="dd-head">Don't</div>
+          <div class="dd-item">Encourage the witness to offer their personal opinion</div>
+          <div class="dd-item">Offer your own opinion or speculate on the outcome</div>
+          <div class="dd-item">Draw hasty conclusions before all facts are gathered</div>
+          <div class="dd-item">Disclose confidential information from other interviews</div>
+          <div class="dd-item">Be afraid to question the witness's version of events</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 3 -->
+  <div class="tab-panel" id="tab-gp">
+    <div class="tab-inner">
+      <div class="outcomes-banner">
+        <div class="ob-icon">⚖️</div>
+        <div class="ob-text">
+          <h3>Consistent process. Not identical outcomes.</h3>
+          <p>Two people can go through exactly the same process and reach different outcomes — and that is right. People are different, circumstances are different, and the facts will never be exactly the same. What must be consistent is <strong>how</strong> you conduct the fact find, <strong>how</strong> you gather evidence, and <strong>how</strong> you record your decision. The outcome itself is not black and white.</p>
+        </div>
+      </div>
+      <span class="sub-label">Factors that influence the outcome</span>
+      <div class="factors-grid">
+        <div class="factor-card"><div class="fc-icon">📅</div><h4>Length of service &amp; history</h4><p>A first concern in four years of service is very different to a repeated pattern of the same behaviour.</p></div>
+        <div class="factor-card"><div class="fc-icon">🤝</div><h4>Acceptance of responsibility</h4><p>Whether the individual acknowledges what happened and shows insight matters when deciding next steps.</p></div>
+        <div class="factor-card"><div class="fc-icon">💛</div><h4>Mitigating circumstances</h4><p>Personal pressures, health, staffing levels, or factors outside the individual's control may reduce the severity of the response.</p></div>
+        <div class="factor-card"><div class="fc-icon">🔁</div><h4>Pattern or isolated incident</h4><p>A single lapse in judgement is different to a pattern. Has a similar concern been raised before, even informally?</p></div>
+        <div class="factor-card"><div class="fc-icon">👥</div><h4>Impact on others</h4><p>The effect on service users, colleagues, or the organisation is a key factor in deciding whether informal resolution is appropriate.</p></div>
+        <div class="factor-card"><div class="fc-icon">📚</div><h4>Training &amp; awareness</h4><p>Was the individual trained and aware of the relevant policy? Lack of awareness points toward support rather than sanction.</p></div>
+      </div>
+      <span class="sub-label">What this means in practice</span>
+      <div class="three-cols">
+        <div class="tcol same"><h4>🔄 Process must be the same</h4><p>Every fact find follows the same steps — plan it, document it, give the individual the opportunity to respond, review the evidence, record your reasoning.</p></div>
+        <div class="tcol diff"><h4>⚡ Outcomes can differ</h4><p>The same type of concern in two different sets of circumstances may genuinely warrant different responses. That is not inconsistency — it is fair and proportionate decision-making.</p></div>
+        <div class="tcol key"><h4>✓ The record is what matters</h4><p>Document the facts, the factors you considered, and why you reached your conclusion. A well-reasoned decision can always be defended. An undocumented one cannot.</p></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+function sel(i) {
+  document.querySelectorAll('.fa-step').forEach((el,j) => el.classList.toggle('sel', j===i));
+  document.querySelectorAll('.step-card').forEach((el,j) => el.classList.toggle('sel', j===i));
+}
+function showTab(id, btn) {
+  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+</script>
+</body>
+</html>
