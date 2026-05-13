@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Probation Periods</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+  --teal:        #2a8a8a;
+  --teal-dark:   #1d6666;
+  --teal-deeper: #164f4f;
+  --teal-light:  #e4f4f4;
+  --teal-xlight: #f2fafa;
+  --green-yes:   #2d7a4f;
+  --green-light: #e8f5ed;
+  --red:         #8b2020;
+  --red-light:   #fdf0f0;
+  --amber:       #7a5010;
+  --amber-light: #fdf6e8;
+  --amber-border:#e8c878;
+  --text:        #1a2e2e;
+  --text-mid:    #3d5c5c;
+  --text-light:  #7a9a9a;
+  --border:      #c8e0e0;
+  --white:       #ffffff;
+  --bg:          #f4f7f7;
+  --shadow-sm:   0 1px 4px rgba(26,74,74,0.07);
+  --shadow:      0 3px 14px rgba(26,74,74,0.09);
+}
+body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; padding: 20px 24px 32px; }
+
+.flow-wrap { background: var(--white); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-sm); overflow: hidden; margin-bottom: 18px; }
+.flow-header { padding: 16px 18px 14px; border-bottom: 1px solid var(--border); }
+.flow-header h2 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 8px; }
+.flow-legend { display: flex; gap: 18px; margin-bottom: 10px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.flow-principle { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+.flow-principle strong { color: var(--teal-dark); }
+.flow-body { padding: 16px 18px 0; }
+
+/* CHEVRONS — teal=standard, amber=decision */
+.flow-arrows { display: flex; }
+.fa-step { flex: 1; cursor: pointer; transition: filter 0.15s, transform 0.13s; }
+.fa-step:hover { filter: brightness(1.1); transform: translateY(-2px); }
+.fa-arrow { height: 48px; display: flex; align-items: center; justify-content: center; font-size: 10.5px; font-weight: 600; color: white; text-align: center; line-height: 1.3; padding: 4px 4px 4px 16px; clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%, 14px 50%); }
+.fa-step:first-child .fa-arrow { clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 50%, calc(100% - 14px) 100%, 0 100%); padding-left: 10px; }
+/* teal = standard (1,2,6), amber = decision (3,4,5) */
+.fa-step.standard .fa-arrow { background: #4a9a9a; }
+.fa-step.decision  .fa-arrow { background: #d4922a; }
+.fa-step.sel .fa-arrow { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 2px; }
+
+/* BUBBLES */
+.flow-nums { display: flex; margin-bottom: 12px; }
+.fn-cell { flex: 1; display: flex; flex-direction: column; align-items: center; padding-top: 6px; cursor: pointer; }
+.fn-dot { width: 8px; height: 8px; border-radius: 50%; margin-bottom: 4px; }
+.fn-cell.standard .fn-dot { background: #4a9a9a; }
+.fn-cell.decision  .fn-dot { background: #d4922a; }
+.fn-bubble { color: white; font-size: 10px; font-weight: 700; min-width: 38px; height: 26px; border-radius: 13px; display: flex; align-items: center; justify-content: center; padding: 0 8px; white-space: nowrap; }
+.fn-cell.standard .fn-bubble { background: #4a9a9a; }
+.fn-cell.decision  .fn-bubble { background: #d4922a; }
+.fa-step.sel .fn-bubble { background: var(--teal-deeper); }
+
+/* STEP CARDS — grid so all same height, decision pinned to bottom */
+.step-cards { display: grid; grid-template-columns: repeat(6,1fr); border-top: 1px solid var(--border); }
+.step-card { padding: 12px 11px 14px; border-right: 1px solid var(--border); cursor: pointer; transition: background 0.15s; display: flex; flex-direction: column; }
+.step-card:last-child { border-right: none; }
+.step-card:hover { background: var(--teal-xlight); }
+.step-card.sel { background: var(--teal-xlight); }
+.step-card.dc:hover { background: var(--amber-light); }
+.step-card.dc.sel { background: var(--amber-light); }
+
+.sc-top { flex: 1; } /* pushes decision section to bottom */
+.sc-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; color: var(--teal); margin-bottom: 3px; }
+.sc-tag.amber { color: var(--amber); }
+.sc-title { font-size: 12.5px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
+.sc-note { font-size: 11px; font-style: italic; color: var(--text-light); margin-bottom: 6px; }
+.sc-list { list-style: none; }
+.sc-list li { font-size: 11.5px; color: var(--text-mid); padding: 3px 0 3px 10px; position: relative; line-height: 1.35; border-bottom: 1px solid var(--teal-xlight); }
+.sc-list li:last-child { border-bottom: none; }
+.sc-list li::before { content: ''; position: absolute; left: 0; top: 9px; width: 4px; height: 4px; background: var(--teal); border-radius: 50%; }
+
+.sc-decision { margin-top: 10px; padding-top: 10px; border-top: 2px solid var(--amber-border); }
+.sc-question { font-size: 11px; font-weight: 700; color: var(--amber); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 7px; }
+.sc-outcome { display: flex; align-items: flex-start; gap: 6px; margin-bottom: 5px; font-size: 11.5px; color: var(--text-mid); line-height: 1.35; }
+.sc-outcome:last-child { margin-bottom: 0; }
+.yes-badge { background: #2d7a4f; color: white; font-size: 10px; padding: 2px 7px; border-radius: 99px; flex-shrink: 0; display: inline-block; }
+.no-badge  { background: #8b2020; color: white; font-size: 10px; padding: 2px 7px; border-radius: 99px; flex-shrink: 0; display: inline-block; }
+
+/* CONCERNS */
+.concerns-wrap { background: var(--amber-light); border: 1.5px solid var(--amber-border); border-radius: 8px; padding: 16px 18px; }
+.concerns-wrap h3 { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--amber); margin-bottom: 12px; }
+.concerns-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.concern-col h4 { font-size: 10.5px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--amber); margin-bottom: 8px; }
+.concern-list { list-style: none; }
+.concern-list li { font-size: 13px; color: var(--text-mid); padding: 5px 0 5px 14px; position: relative; border-bottom: 1px solid var(--amber-border); line-height: 1.4; }
+.concern-list li:last-child { border-bottom: none; }
+.concern-list li::before { content: ''; position: absolute; left: 0; top: 12px; width: 5px; height: 5px; background: var(--amber-border); border-radius: 50%; }
+</style>
+</head>
+<body>
+
+<div class="flow-wrap">
+  <div class="flow-header">
+    <h2>Probationary period process</h2>
+    <div class="flow-legend">
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--teal);">
+        <div class="legend-dot" style="background:var(--teal);"></div> Standard stage
+      </div>
+      <div style="display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:var(--amber);">
+        <div class="legend-dot" style="background:var(--amber-light);border:2px solid var(--amber);"></div> Decision / review point
+      </div>
+    </div>
+    <p class="flow-principle"><strong>Key principle:</strong> Raise concerns early — not at the final review. All reviews must be documented in writing. If 6 months passes without a decision, the colleague passes by default.</p>
+  </div>
+  <div class="flow-body">
+    <div class="flow-arrows">
+      <div class="fa-step standard sel" onclick="sel(0)"><div class="fa-arrow">Day 1</div></div>
+      <div class="fa-step standard"     onclick="sel(1)"><div class="fa-arrow">Weeks 1–12</div></div>
+      <div class="fa-step decision"     onclick="sel(2)"><div class="fa-arrow">3 Months</div></div>
+      <div class="fa-step decision"     onclick="sel(3)"><div class="fa-arrow">4–6 Months</div></div>
+      <div class="fa-step decision"     onclick="sel(4)"><div class="fa-arrow">Extension</div></div>
+      <div class="fa-step standard"     onclick="sel(5)"><div class="fa-arrow">6 Months</div></div>
+    </div>
+    <div class="flow-nums">
+      <div class="fn-cell standard" onclick="sel(0)"><div class="fn-dot"></div><div class="fn-bubble">Start</div></div>
+      <div class="fn-cell standard" onclick="sel(1)"><div class="fn-dot"></div><div class="fn-bubble">Support</div></div>
+      <div class="fn-cell decision"  onclick="sel(2)"><div class="fn-dot"></div><div class="fn-bubble">Review 1</div></div>
+      <div class="fn-cell decision"  onclick="sel(3)"><div class="fn-dot"></div><div class="fn-bubble">Review 2</div></div>
+      <div class="fn-cell decision"  onclick="sel(4)"><div class="fn-dot"></div><div class="fn-bubble">Extended</div></div>
+      <div class="fn-cell standard" onclick="sel(5)"><div class="fn-dot"></div><div class="fn-bubble">Final</div></div>
+    </div>
+    <div class="step-cards">
+
+      <div class="step-card sel" onclick="sel(0)">
+        <div class="sc-top">
+          <div class="sc-tag">Start</div>
+          <div class="sc-title">Employment begins</div>
+          <ul class="sc-list">
+            <li>Colleague begins employment</li>
+            <li>Induction &amp; onboarding</li>
+            <li>Mandatory training &amp; shadowing</li>
+            <li>Set clear expectations from day one</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-card" onclick="sel(1)">
+        <div class="sc-top">
+          <div class="sc-tag">Ongoing support</div>
+          <div class="sc-title">Initial supported period</div>
+          <ul class="sc-list">
+            <li>Actively supported throughout</li>
+            <li>Regular check-ins and feedback</li>
+            <li>First review at 3 months</li>
+            <li>Document all conversations in writing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step-card dc" onclick="sel(2)">
+        <div class="sc-top">
+          <div class="sc-tag amber">Decision point</div>
+          <div class="sc-title">First probation review</div>
+          <ul class="sc-list">
+            <li>Review progress against expectations</li>
+            <li>Give honest, specific feedback</li>
+            <li>Give individual opportunity to respond</li>
+            <li>Document outcome in writing</li>
+          </ul>
+        </div>
+        <div class="sc-decision">
+          <div class="sc-question">Has performance been satisfactory?</div>
+          <div class="sc-outcome"><span class="yes-badge">Yes</span> Proceed to final review at 6 months</div>
+          <div class="sc-outcome"><span class="no-badge">No</span> Hold second review at 4–6 months</div>
+        </div>
+      </div>
+
+      <div class="step-card dc" onclick="sel(3)">
+        <div class="sc-top">
+          <div class="sc-tag amber">Decision point</div>
+          <div class="sc-title">Second probation review</div>
+          <div class="sc-note">Only if first review was unsatisfactory</div>
+          <ul class="sc-list">
+            <li>Review progress since first review</li>
+            <li>Has support made a difference?</li>
+            <li>Document outcome in writing</li>
+          </ul>
+        </div>
+        <div class="sc-decision">
+          <div class="sc-question">Has performance been satisfactory?</div>
+          <div class="sc-outcome"><span class="yes-badge">Yes</span> Probation passed — confirm in writing</div>
+          <div class="sc-outcome"><span class="no-badge">No</span> Move to extension period</div>
+        </div>
+      </div>
+
+      <div class="step-card dc" onclick="sel(4)">
+        <div class="sc-top">
+          <div class="sc-tag amber">Decision point</div>
+          <div class="sc-title">Extended probation review</div>
+          <div class="sc-note">Only if second review was unsatisfactory</div>
+          <ul class="sc-list">
+            <li>Review held at end of extension</li>
+            <li>Has improvement been sustained?</li>
+            <li>Document outcome in writing</li>
+          </ul>
+        </div>
+        <div class="sc-decision">
+          <div class="sc-question">Has performance been satisfactory?</div>
+          <div class="sc-outcome"><span class="yes-badge">Pass</span> Confirm completion in writing</div>
+          <div class="sc-outcome"><span class="no-badge">Fail</span> Confirm termination in writing</div>
+        </div>
+      </div>
+
+      <div class="step-card" onclick="sel(5)">
+        <div class="sc-top">
+          <div class="sc-tag">Final review</div>
+          <div class="sc-title">Final probation review meeting</div>
+          <ul class="sc-list">
+            <li>Final review held and documented</li>
+            <li>Confirm completion of probation in writing</li>
+            <li>Issue confirmation letter to individual</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+
+  <!-- IF HAPPY -->
+  <div style="background:var(--green-light);border:1.5px solid #a8d8b8;border-radius:8px;padding:16px 18px;">
+    <h3 style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--green-yes);margin-bottom:12px;">If you are happy with progress</h3>
+    <ul style="list-style:none;">
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid #a8d8b8;line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:#a8d8b8;border-radius:50%;display:block;"></span>
+        Tell them clearly and specifically what they are doing well. Give examples, not just "you're doing fine"
+      </li>
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid #a8d8b8;line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:#a8d8b8;border-radius:50%;display:block;"></span>
+        Acknowledge how they have settled in and the progress they have made
+      </li>
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid #a8d8b8;line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:#a8d8b8;border-radius:50%;display:block;"></span>
+        Build their confidence. They are still new and reassurance matters
+      </li>
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid #a8d8b8;line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:#a8d8b8;border-radius:50%;display:block;"></span>
+        Ask what support they still need going forward
+      </li>
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:#a8d8b8;border-radius:50%;display:block;"></span>
+        Confirm the positive outcome in writing. Even a good review needs to be documented
+      </li>
+    </ul>
+  </div>
+
+  <!-- IF CONCERNS -->
+  <div style="background:var(--amber-light);border:1.5px solid var(--amber-border);border-radius:8px;padding:16px 18px;">
+    <h3 style="font-size:11px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--amber);margin-bottom:12px;">If there are concerns</h3>
+    <ul style="list-style:none;">
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid var(--amber-border);line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:var(--amber-border);border-radius:50%;display:block;"></span>
+        Name the concern clearly and specifically. Do not hint at it
+      </li>
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid var(--amber-border);line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:var(--amber-border);border-radius:50%;display:block;"></span>
+        Give the individual the opportunity to respond
+      </li>
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid var(--amber-border);line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:var(--amber-border);border-radius:50%;display:block;"></span>
+        Consider what support can be put in place. Training, mentoring, adjusted expectations
+      </li>
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid var(--amber-border);line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:var(--amber-border);border-radius:50%;display:block;"></span>
+        Set a clear improvement target with a timescale
+      </li>
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid var(--amber-border);line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:var(--amber-border);border-radius:50%;display:block;"></span>
+        Document everything in writing and give a copy to the individual
+      </li>
+      <li style="font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;line-height:1.4;">
+        <span style="position:absolute;left:0;top:12px;width:5px;height:5px;background:var(--amber-border);border-radius:50%;display:block;"></span>
+        Before you decide: have concerns been raised early, has support been put in place and documented, and have those concerns continued despite that support?
+      </li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+function sel(i) {
+  document.querySelectorAll('.fa-step').forEach((el,j) => el.classList.toggle('sel', j===i));
+  document.querySelectorAll('.step-card').forEach((el,j) => el.classList.toggle('sel', j===i));
+}
+</script>
+</body>
+</html>
