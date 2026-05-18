@@ -32,12 +32,6 @@ body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--te
 
 .sub-label { font-size: 10px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; display: block; }
 
-/* INTRO CARDS */
-.intro-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; margin-bottom: 18px; }
-.intro-card { background: var(--white); border: 1px solid var(--border); border-top: 3px solid var(--teal); border-radius: 7px; padding: 14px 16px; box-shadow: var(--shadow-sm); }
-.intro-card h3 { font-size: 11px; font-weight: 700; letter-spacing: 0.09em; text-transform: uppercase; color: var(--teal); margin-bottom: 6px; }
-.intro-card p { font-size: 13px; color: var(--text-mid); line-height: 1.55; }
-
 /* FLOWCHART */
 .flow-wrap { background: var(--white); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-sm); overflow: hidden; margin-bottom: 22px; }
 .flow-header { padding: 16px 18px 14px; border-bottom: 1px solid var(--border); }
@@ -49,7 +43,7 @@ body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--te
 .fa-step { flex: 1; cursor: pointer; transition: filter 0.15s, transform 0.13s; }
 .fa-step:hover { filter: brightness(1.1); transform: translateY(-2px); }
 .fa-arrow { height: 50px; display: flex; align-items: center; justify-content: center; font-size: 11.5px; font-weight: 600; color: white; text-align: center; line-height: 1.3; padding: 4px 6px 4px 20px; clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%, 15px 50%); }
-.fa-step:first-child .fa-arrow { clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%)); padding-left: 12px; }
+.fa-step:first-child .fa-arrow { clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 50%, calc(100% - 15px) 100%, 0 100%); padding-left: 12px; }
 .fac1 .fa-arrow{background:#3a7a8a;} .fac2 .fa-arrow{background:#2e9080;} .fac3 .fa-arrow{background:#28a86a;} .fac4a .fa-arrow{background:#228858;} .fac4b .fa-arrow{background:#1a6644;}
 .fa-step.sel .fa-arrow { outline: 2px solid var(--teal); outline-offset: 2px; border-radius: 2px; }
 .flow-nums { display: flex; margin-bottom: 12px; }
@@ -147,22 +141,6 @@ body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--te
 </style>
 </head>
 <body>
-
-<!-- INTRO CARDS -->
-<div class="intro-cards">
-  <div class="intro-card">
-    <h3>What is a fact find?</h3>
-    <p>The first step in addressing concerns — an informal meeting to gather all relevant facts before any decision is made. It is <strong>not</strong> a disciplinary hearing.</p>
-  </div>
-  <div class="intro-card">
-    <h3>Why does it matter?</h3>
-    <p>Failure to follow up concerns could lead to evidence being destroyed and potential tribunal claims. Consistent process protects everyone involved.</p>
-  </div>
-  <div class="intro-card">
-    <h3>When to use it</h3>
-    <p>Potential disciplinary matter, conflict between colleagues, allegations of bullying or harassment, complaint from a service user, or a safeguarding concern.</p>
-  </div>
-</div>
 
 <!-- FLOWCHART with merged principle -->
 <div class="flow-wrap">
@@ -276,10 +254,6 @@ body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--te
         <div class="q-item">Is there anything going on outside of work that may be relevant?</div>
       </div>
 
-
-
-
-
     </div>
   </div>
 
@@ -304,8 +278,6 @@ body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--te
         <div class="factor-card"><div class="fc-icon">👥</div><h4>Impact on others</h4><p>The effect on service users, colleagues, or the organisation is a key factor in deciding whether informal resolution is appropriate.</p></div>
         <div class="factor-card"><div class="fc-icon">📚</div><h4>Training &amp; awareness</h4><p>Was the individual trained and aware of the relevant policy? Lack of awareness points toward support rather than sanction.</p></div>
       </div>
-
-
 
     </div>
   </div>
