@@ -8,32 +8,21 @@
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 :root {
-  --teal:        #2a8a8a;
-  --teal-dark:   #1d6666;
-  --teal-deeper: #164f4f;
-  --teal-light:  #e4f4f4;
-  --teal-xlight: #f2fafa;
-  --green-yes:   #2d7a4f;
-  --green-light: #e8f5ed;
-  --red:         #8b2020;
-  --red-light:   #fdf0f0;
-  --amber:       #7a5010;
-  --amber-light: #fdf6e8;
-  --text:        #1a2e2e;
-  --text-mid:    #3d5c5c;
-  --text-light:  #7a9a9a;
-  --border:      #c8e0e0;
-  --white:       #ffffff;
-  --bg:          #f4f7f7;
-  --shadow-sm:   0 1px 4px rgba(26,74,74,0.07);
-  --shadow:      0 3px 14px rgba(26,74,74,0.09);
+  --teal:#2a8a8a;--teal-dark:#1d6666;--teal-deeper:#164f4f;
+  --teal-light:#e4f4f4;--teal-xlight:#f2fafa;
+  --green-yes:#2d7a4f;--green-light:#e8f5ed;
+  --red:#8b2020;--red-light:#fdf0f0;
+  --amber:#7a5010;--amber-light:#fdf6e8;
+  --text:#1a2e2e;--text-mid:#3d5c5c;--text-light:#7a9a9a;
+  --border:#c8e0e0;--white:#ffffff;--bg:#f4f7f7;
+  --shadow-sm:0 1px 4px rgba(26,74,74,0.07);
+  --shadow:0 3px 14px rgba(26,74,74,0.09);
 }
-body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--text); font-size: 14px; line-height: 1.6; padding: 20px 24px 32px; }
-
+body { font-family: 'Outfit', sans-serif; background: var(--white); color: var(--text); font-size: 14px; line-height: 1.6; padding: 20px 24px 32px; }
 .sub-label { font-size: 10px; font-weight: 700; letter-spacing: 0.11em; text-transform: uppercase; color: var(--text-light); margin-bottom: 8px; display: block; }
 
 /* FLOWCHART */
-.flow-wrap { background: var(--white); border: 1px solid var(--border); border-radius: 8px; box-shadow: var(--shadow-sm); overflow: hidden; margin-bottom: 22px; }
+.flow-wrap { background: var(--white); border: 2px solid var(--teal); border-radius: 8px; box-shadow: var(--shadow-sm); overflow: hidden; margin-bottom: 22px; }
 .flow-header { padding: 16px 18px 14px; border-bottom: 1px solid var(--border); }
 .flow-header h2 { font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
 .flow-principle { font-size: 13px; color: var(--text-mid); line-height: 1.6; }
@@ -60,7 +49,7 @@ body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--te
 .step-card.sel { background: var(--teal-xlight); }
 .sc-tag { font-size: 11px; font-weight: 700; color: var(--teal); margin-bottom: 3px; display: flex; align-items: center; gap: 5px; flex-wrap: wrap; }
 .yes-badge { background: #2d7a4f; color: white; font-size: 10px; padding: 1px 7px; border-radius: 99px; }
-.no-badge  { background: #8b2020; color: white; font-size: 10px; padding: 1px 7px; border-radius: 99px; }
+.no-badge { background: #8b2020; color: white; font-size: 10px; padding: 1px 7px; border-radius: 99px; }
 .sc-title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 8px; line-height: 1.3; }
 .sc-list { list-style: none; }
 .sc-list li { font-size: 12px; color: var(--text-mid); padding: 3px 0 3px 11px; position: relative; line-height: 1.4; border-bottom: 1px solid var(--teal-xlight); }
@@ -68,98 +57,70 @@ body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--te
 .sc-list li::before { content: ''; position: absolute; left: 0; top: 10px; width: 4px; height: 4px; background: var(--teal); border-radius: 50%; }
 
 /* TABS */
-.tab-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.tab-btn { background: var(--white); border: 1.5px solid var(--border); border-radius: 9px 9px 0 0; border-bottom: none; padding: 14px 18px; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 13px; transition: background 0.15s; box-shadow: var(--shadow-sm); }
-.tab-btn:hover { background: var(--teal-xlight); border-color: var(--teal); }
+.tab-buttons { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+.tab-btn { background: var(--white); border: 2px solid var(--teal); border-radius: 9px 9px 0 0; border-bottom: none; padding: 13px 16px; cursor: pointer; text-align: left; display: flex; align-items: center; gap: 12px; transition: background 0.15s; box-shadow: var(--shadow-sm); }
+.tab-btn:hover { background: var(--teal-xlight); }
 .tab-btn.active { background: var(--teal-dark); border-color: var(--teal-dark); }
-.tb-num { width: 30px; height: 30px; min-width: 30px; border-radius: 50%; background: var(--teal-light); color: var(--teal-dark); font-size: 13px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.2s, color 0.2s; }
+.tb-num { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: var(--teal-light); color: var(--teal-dark); font-size: 12px; font-weight: 700; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
 .tab-btn.active .tb-num { background: rgba(255,255,255,0.2); color: white; }
-.tb-text strong { display: block; font-size: 14px; font-weight: 700; color: var(--text); line-height: 1.25; }
+.tb-text strong { display: block; font-size: 13px; font-weight: 700; color: var(--text); line-height: 1.25; }
 .tab-btn.active .tb-text strong { color: white; }
-.tb-text span { font-size: 12px; color: var(--text-light); }
+.tb-text span { font-size: 11px; color: var(--text-light); }
 .tab-btn.active .tb-text span { color: rgba(255,255,255,0.62); }
-.tab-panel-wrap { background: var(--white); border: 1.5px solid var(--border); border-radius: 0 0 10px 10px; border-top: none; box-shadow: var(--shadow); }
+.tab-panel-wrap { background: var(--white); border: 2px solid var(--teal); border-radius: 0 0 10px 10px; border-top: none; box-shadow: var(--shadow); }
 .tab-panel { display: none; }
 .tab-panel.active { display: block; animation: fadeIn 0.18s ease; }
-.tab-inner { padding: 22px 22px 26px; }
+.tab-inner { padding: 20px 22px 24px; }
 
-/* TAB 1 */
-.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px; }
-.info-box { background: var(--teal-xlight); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
-.info-box h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--teal-dark); margin-bottom: 10px; }
-.checklist { list-style: none; }
-.checklist li { font-size: 13px; color: var(--text-mid); padding: 5px 0 5px 20px; position: relative; border-bottom: 1px solid var(--border); line-height: 1.4; }
-.checklist li:last-child { border-bottom: none; }
-.checklist li::before { content: '✓'; position: absolute; left: 0; top: 5px; font-size: 12px; color: var(--teal); font-weight: 700; }
+/* CONSISTENT PROCESS BANNER */
+.process-banner { background: linear-gradient(135deg, #2a6e6e 0%, #2a7a7a 100%); border-radius: 9px; padding: 16px 20px; color: white; margin-bottom: 18px; display: flex; gap: 14px; align-items: flex-start; }
+.pb-icon { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.pb-text h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; color: white; }
+.pb-text p { font-size: 12.5px; color: rgba(255,255,255,0.82); line-height: 1.6; }
 
-.questions-section { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 20px; }
-.q-block { background: var(--white); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
-.q-block-head { background: var(--teal-dark); color: white; padding: 9px 14px; font-size: 11.5px; font-weight: 700; }
-.q-item { font-size: 13px; color: var(--text-mid); padding: 7px 12px 7px 24px; border-bottom: 1px solid var(--teal-xlight); position: relative; line-height: 1.4; }
-.q-item:last-child { border-bottom: none; }
-.q-item::before { content: ''; position: absolute; left: 8px; top: 13px; width: 5px; height: 5px; background: var(--teal); border-radius: 50%; }
+/* FACTORS */
+.factors-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; }
+.factor-card { background: var(--teal-xlight); border: 1px solid var(--border); border-radius: 8px; padding: 12px 13px; }
+.factor-card .fc-icon { font-size: 16px; margin-bottom: 5px; }
+.factor-card h4 { font-size: 12px; font-weight: 700; color: var(--teal-dark); margin-bottom: 3px; }
+.factor-card p { font-size: 12px; color: var(--text-mid); line-height: 1.45; }
 
-.avoid-box { background: var(--red-light); border: 1.5px solid #f0b8b8; border-radius: 8px; padding: 14px 16px; margin-bottom: 20px; }
-.avoid-box h4 { font-size: 11px; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--red); margin-bottom: 8px; }
-.avoid-box p { font-size: 13px; color: #7a2020; line-height: 1.55; margin-bottom: 6px; }
-.avoid-box .eg { font-size: 12.5px; font-style: italic; color: #9a3030; }
-
-.do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-.dd { border-radius: 7px; overflow: hidden; }
-.dd.do{border:1.5px solid #a8d8b8;} .dd.dont{border:1.5px solid #f0b8b8;}
-.dd-head { padding: 8px 13px; font-size: 10.5px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
-.dd.do .dd-head{background:var(--green-light);color:var(--green-yes);}
-.dd.dont .dd-head{background:var(--red-light);color:var(--red);}
-.dd-item { font-size: 12.5px; color: var(--text-mid); padding: 6px 12px 6px 26px; position: relative; border-bottom: 1px solid var(--teal-xlight); line-height: 1.4; background: white; }
-.dd-item:last-child { border-bottom: none; }
-.dd.do .dd-item::before{content:'✓';position:absolute;left:9px;top:6px;font-size:11px;color:var(--green-yes);font-weight:700;}
-.dd.dont .dd-item::before{content:'✗';position:absolute;left:9px;top:6px;font-size:11px;color:var(--red);font-weight:700;}
-
-/* TAB 2 */
-.outcome-banner { background: linear-gradient(135deg, var(--teal-deeper) 0%, #1a5050 100%); border-radius: 9px; padding: 18px 22px; color: white; margin-bottom: 20px; display: flex; gap: 16px; align-items: flex-start; }
-.ob-icon { font-size: 26px; flex-shrink: 0; margin-top: 2px; }
-.ob-text h3 { font-size: 15px; font-weight: 700; margin-bottom: 5px; color: white; }
-.ob-text p { font-size: 13px; color: rgba(255,255,255,0.82); line-height: 1.65; }
-.factors-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 11px; margin-bottom: 20px; }
-.factor-card { background: var(--teal-xlight); border: 1px solid var(--border); border-radius: 8px; padding: 13px 14px; }
-.factor-card .fc-icon { font-size: 18px; margin-bottom: 6px; }
-.factor-card h4 { font-size: 12.5px; font-weight: 700; color: var(--teal-dark); margin-bottom: 4px; }
-.factor-card p { font-size: 12.5px; color: var(--text-mid); line-height: 1.5; }
-.outcome-split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-.outcome-col { border-radius: 8px; overflow: hidden; }
-.outcome-col.informal{border:1.5px solid #a8d8b8;} .outcome-col.formal{border:1.5px solid #f0b8b8;}
-.outcome-col-head { padding: 10px 15px; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; }
-.outcome-col.informal .outcome-col-head{background:var(--green-light);color:var(--green-yes);}
-.outcome-col.formal   .outcome-col-head{background:var(--red-light);color:var(--red);}
-.outcome-item { font-size: 13px; color: var(--text-mid); padding: 7px 14px; border-bottom: 1px solid var(--teal-xlight); line-height: 1.4; background: white; }
-.outcome-item:last-child { border-bottom: none; }
-.outcome-note { font-size: 12px; font-style: italic; padding: 8px 14px; background: white; border-top: 1px solid var(--border); }
-.outcome-col.informal .outcome-note{color:var(--green-yes);}
-.outcome-col.formal   .outcome-note{color:var(--red);}
+/* OUTCOME PATH */
+.op-intro { font-size: 12.5px; color: var(--text-mid); margin-bottom: 12px; line-height: 1.5; font-style: italic; padding: 10px 14px; border-radius: 6px; }
+.op-intro.informal { background: #e8f5ed; border: 1px solid #a8d8b8; }
+.op-intro.formal { background: #e8f0f8; border: 1px solid #a8c0d8; }
+.op-list { list-style: none; }
+.op-list li { font-size: 13px; color: var(--text-mid); padding: 6px 0 6px 18px; position: relative; border-bottom: 1px solid var(--teal-xlight); line-height: 1.4; }
+.op-list li:last-child { border-bottom: none; }
+.op-list.informal li::before { content: '✓'; position: absolute; left: 0; top: 6px; font-size: 11px; color: var(--green-yes); font-weight: 700; }
+.op-list.formal li::before { content: "→"; position: absolute; left: 0; top: 6px; font-size: 11px; color: var(--blue); font-weight: 700; }
+.op-note { font-size: 12px; font-style: italic; margin-top: 14px; padding: 10px 14px; border-radius: 6px; }
+.op-note.informal { background: #e8f5ed; color: var(--green-yes); }
+.op-note.formal { background: #e8f0f8; color: var(--blue); }
 
 @keyframes fadeIn { from{opacity:0;transform:translateY(4px);} to{opacity:1;transform:translateY(0);} }
 </style>
 </head>
 <body>
 
-<!-- FLOWCHART with merged principle -->
+<!-- FLOWCHART -->
 <div class="flow-wrap">
   <div class="flow-header">
     <h2>Fact find / investigation process</h2>
-    <p class="flow-principle"><strong>Key principle:</strong> The purpose of a fact find is to discover all relevant facts in a fair, reasonable and objective manner. Minor issues do not always require a full investigation — but all fact finds must be documented in writing with expectations set going forward.</p>
+    <p class="flow-principle"><strong>Key principle:</strong> The purpose of a fact find / investigation is to discover all relevant facts in a fair, reasonable and objective manner. Minor issues do not always require a full investigation — but all fact finds must be documented in writing with expectations set going forward.</p>
   </div>
   <div class="flow-body">
     <div class="flow-arrows">
       <div class="fa-step fac1 sel" onclick="sel(0)"><div class="fa-arrow">Concern or complaint received</div></div>
-      <div class="fa-step fac2"     onclick="sel(1)"><div class="fa-arrow">Conduct fact find meeting</div></div>
-      <div class="fa-step fac3"     onclick="sel(2)"><div class="fa-arrow">Can it be resolved informally?</div></div>
-      <div class="fa-step fac4a"    onclick="sel(3)"><div class="fa-arrow">Informal resolution</div></div>
-      <div class="fa-step fac4b"    onclick="sel(4)"><div class="fa-arrow">Formal disciplinary route</div></div>
+      <div class="fa-step fac2" onclick="sel(1)"><div class="fa-arrow">Conduct fact find meeting</div></div>
+      <div class="fa-step fac3" onclick="sel(2)"><div class="fa-arrow">Can it be resolved informally?</div></div>
+      <div class="fa-step fac4a" onclick="sel(3)"><div class="fa-arrow">Informal resolution</div></div>
+      <div class="fa-step fac4b" onclick="sel(4)"><div class="fa-arrow">Formal disciplinary route</div></div>
     </div>
     <div class="flow-nums">
-      <div class="fn-cell fac1"  onclick="sel(0)"><div class="fn-dot"></div><div class="fn-bubble">1</div></div>
-      <div class="fn-cell fac2"  onclick="sel(1)"><div class="fn-dot"></div><div class="fn-bubble">2</div></div>
-      <div class="fn-cell fac3"  onclick="sel(2)"><div class="fn-dot"></div><div class="fn-bubble">3</div></div>
+      <div class="fn-cell fac1" onclick="sel(0)"><div class="fn-dot"></div><div class="fn-bubble">1</div></div>
+      <div class="fn-cell fac2" onclick="sel(1)"><div class="fn-dot"></div><div class="fn-bubble">2</div></div>
+      <div class="fn-cell fac3" onclick="sel(2)"><div class="fn-dot"></div><div class="fn-bubble">3</div></div>
       <div class="fn-cell fac4a" onclick="sel(3)"><div class="fn-dot"></div><div class="fn-bubble">4a</div></div>
       <div class="fn-cell fac4b" onclick="sel(4)"><div class="fn-dot"></div><div class="fn-bubble">4b</div></div>
     </div>
@@ -193,82 +154,34 @@ body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--te
   </div>
 </div>
 
-<!-- TAB BUTTONS -->
+<!-- TABS -->
 <div class="tab-buttons">
-  <button class="tab-btn active" onclick="showTab('meeting',this)">
+  <button class="tab-btn active" onclick="showTab('deciding',this)">
     <div class="tb-num">1</div>
-    <div class="tb-text">
-      <strong>Before &amp; during the meeting</strong>
-      <span>Planning, questions and witness guidance</span>
-    </div>
+    <div class="tb-text"><strong>Deciding the outcome</strong><span>Process, consistency and factors</span></div>
   </button>
-  <button class="tab-btn" onclick="showTab('outcome',this)">
+  <button class="tab-btn" onclick="showTab('informal',this)">
     <div class="tb-num">2</div>
-    <div class="tb-text">
-      <strong>Deciding the outcome</strong>
-      <span>Factors to consider, informal vs formal</span>
-    </div>
+    <div class="tb-text"><strong>Informal resolution</strong><span>When and what to do</span></div>
+  </button>
+  <button class="tab-btn" onclick="showTab('formal',this)">
+    <div class="tb-num">3</div>
+    <div class="tb-text"><strong>Formal disciplinary route</strong><span>When and what to do</span></div>
   </button>
 </div>
 
 <div class="tab-panel-wrap">
 
-  <!-- TAB 1 -->
-  <div class="tab-panel active" id="tab-meeting">
+  <!-- TAB 1: DECIDING THE OUTCOME -->
+  <div class="tab-panel active" id="tab-deciding">
     <div class="tab-inner">
-
-      <div class="two-col">
-        <div class="info-box">
-          <h4>Before you go in</h4>
-          <ul class="checklist">
-            <li>Write down the specific concern before speaking to anyone</li>
-            <li>Review relevant records — care notes, PASS, MAR charts, rotas, logs</li>
-            <li>Identify who needs to be interviewed and in what order</li>
-            <li>Confirm who will conduct it — anyone without prior involvement</li>
-            <li>Inform the individual informally and advise of right to a companion</li>
-          </ul>
-        </div>
-        <div class="info-box">
-          <h4>During the meeting</h4>
-          <ul class="checklist">
-            <li>Confirm at the start this is a fact find, not a disciplinary</li>
-            <li>Ask open questions — give them full opportunity to respond</li>
-            <li>Take detailed notes in their own words, not paraphrased</li>
-            <li>Do not share one person's account with another</li>
-            <li>Interview witnesses separately and keep notes for each</li>
-            <li>Summarise at the end and ask if anything has been missed</li>
-          </ul>
-        </div>
-      </div>
-
-      <span class="sub-label" style="margin-top:4px;">Questions to ask</span>
-      <div class="q-block" style="margin-bottom:20px;">
-        <div class="q-block-head">Useful questions</div>
-        <div class="q-item">Can you tell me in your own words what happened?</div>
-        <div class="q-item">What happened next? Walk me through the sequence of events.</div>
-        <div class="q-item">Who else was present? What did they say or do?</div>
-        <div class="q-item">What impact do you think your actions had?</div>
-        <div class="q-item">If you're saying that didn't happen — can you help me understand what did?</div>
-        <div class="q-item">Is there anything else you think I should know before I make a decision?</div>
-        <div class="q-item">What would you want to happen next, and why?</div>
-        <div class="q-item">Is there anything going on outside of work that may be relevant?</div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- TAB 2 -->
-  <div class="tab-panel" id="tab-outcome">
-    <div class="tab-inner">
-
-      <div class="outcome-banner">
-        <div class="ob-icon">⚖️</div>
-        <div class="ob-text">
+      <div class="process-banner">
+        <div class="pb-icon">⚖️</div>
+        <div class="pb-text">
           <h3>Consistent process. Not identical outcomes.</h3>
-          <p>Two people can go through exactly the same process and reach different outcomes — and that is right. People are different, circumstances are different. What must be consistent is <strong>how</strong> you conduct the fact find and <strong>how</strong> you record your decision. The outcome is not black and white.</p>
+          <p>Two people can go through exactly the same process and reach different outcomes. People are different, circumstances are different. What must be consistent is <strong>how</strong> you conduct the fact find and <strong>how</strong> you record your decision. The outcome is not black and white.</p>
         </div>
       </div>
-
       <span class="sub-label">Factors that influence the outcome</span>
       <div class="factors-grid">
         <div class="factor-card"><div class="fc-icon">📅</div><h4>Length of service &amp; history</h4><p>A first concern in four years is very different to a repeated pattern of the same behaviour.</p></div>
@@ -278,7 +191,37 @@ body { font-family: 'Outfit', sans-serif; background: var(--bg); color: var(--te
         <div class="factor-card"><div class="fc-icon">👥</div><h4>Impact on others</h4><p>The effect on service users, colleagues, or the organisation is a key factor in deciding whether informal resolution is appropriate.</p></div>
         <div class="factor-card"><div class="fc-icon">📚</div><h4>Training &amp; awareness</h4><p>Was the individual trained and aware of the relevant policy? Lack of awareness points toward support rather than sanction.</p></div>
       </div>
+    </div>
+  </div>
 
+  <!-- TAB 2: INFORMAL RESOLUTION -->
+  <div class="tab-panel" id="tab-informal">
+    <div class="tab-inner">
+      <p class="op-intro informal">Appropriate where the concern is minor, a first occurrence, or where support and guidance is sufficient to address the issue without formal action.</p>
+      <ul class="op-list informal">
+        <li>Letter of concern or documented discussion</li>
+        <li>Coaching, mentoring or additional support</li>
+        <li>Further training or shadowing</li>
+        <li>Performance support plan with a clear review date</li>
+        <li>No further action where allegations are unfounded</li>
+        <li>Always confirm the outcome in writing</li>
+      </ul>
+      <p class="op-note informal">Even informal outcomes must be documented in writing and a copy given to the individual.</p>
+    </div>
+  </div>
+
+  <!-- TAB 3: FORMAL DISCIPLINARY ROUTE -->
+  <div class="tab-panel" id="tab-formal">
+    <div class="tab-inner">
+      <p class="op-intro formal">Required where the concern is serious, repeated, or where informal resolution has already been attempted without improvement.</p>
+      <ul class="op-list formal">
+        <li>Complete the investigation report in full before proceeding to a hearing</li>
+        <li>Type up, sign and share all meeting notes with the individual</li>
+        <li>Issue a formal hearing invitation in writing stating the allegations clearly</li>
+        <li>Confirm the right to be accompanied in writing</li>
+        <li>Follow the disciplinary process guide</li>
+      </ul>
+      <p class="op-note formal">Do not proceed to a disciplinary hearing without a completed investigation report.</p>
     </div>
   </div>
 
