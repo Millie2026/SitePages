@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fact Find Invite Template</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --teal:#2a8a8a;--teal-dark:#1d6666;
+  --teal-light:#e4f4f4;--teal-xlight:#f2fafa;
+  --text:#1a2e2e;--text-mid:#3d5c5c;--text-light:#7a9a9a;
+  --border:#c8e0e0;--white:#ffffff;
+}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);font-size:14px;line-height:1.6;padding:12px;}
+.wrap{background:var(--white);border:2px solid var(--teal);border-radius:8px;overflow:hidden;}
+.head{background:var(--teal-dark);color:white;padding:8px 12px;display:flex;justify-content:space-between;align-items:center;}
+.head-title{font-size:11px;font-weight:600;}
+.head-note{font-size:10px;color:rgba(255,255,255,0.7);}
+.copy-btn{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);color:white;font-size:10px;padding:3px 10px;border-radius:4px;cursor:pointer;font-family:'Outfit',sans-serif;white-space:nowrap;}
+.copy-btn:hover{background:rgba(255,255,255,0.25);}
+.body{padding:10px 12px;}
+.intro{font-size:10px;color:var(--text-light);margin-bottom:8px;padding-bottom:8px;border-bottom:1px solid var(--border);}
+.email-text{font-size:11px;color:var(--text-mid);line-height:1.8;white-space:pre-wrap;}
+.placeholder{color:var(--teal-dark);font-weight:600;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="head">
+    <div>
+      <div class="head-title">Fact find meeting invite</div>
+      <div class="head-note">You should always inform the colleague before the meeting. Unlike formal hearings, there is no set template for this. The below is a suggested format you can use or adapt.</div>
+    </div>
+    <button class="copy-btn" onclick="copyEmail()">Copy</button>
+  </div>
+  <div class="body">
+    <div class="email-text" id="email-text">Hello <span class="placeholder">[Name]</span>,
+
+I hope you are well.
+
+I would like to invite you to attend a meeting scheduled for <span class="placeholder">[DATE]</span> at <span class="placeholder">[TIME]</span>. The meeting will take place at <span class="placeholder">[LOCATION]</span>.
+
+I would like to meet with you to discuss a recent matter and hear your perspective.
+
+Please do let me know if you have any difficulties attending. If you have any questions ahead of the meeting, please do not hesitate to get in touch.
+
+You are also welcome to bring a work colleague or trade union representative along with you if you would find that helpful.
+
+Kind regards,
+<span class="placeholder">[Your name]</span></div>
+  </div>
+</div>
+<script>
+function copyEmail(){
+  const text = document.getElementById('email-text').innerText;
+  navigator.clipboard.writeText(text).then(()=>{
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent='Copied!';
+    setTimeout(()=>btn.textContent='Copy',2000);
+  });
+}
+</script>
+</body>
+</html>
