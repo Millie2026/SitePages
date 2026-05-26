@@ -8,151 +8,171 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
-  --teal:#2a8a8a;--teal-dark:#1d6666;--teal-deeper:#164f4f;
+  --teal:#2a8a8a;--teal-dark:#1d6666;
   --teal-light:#e4f4f4;--teal-xlight:#f2fafa;
-  --green-yes:#2d7a4f;--green-light:#e8f5ed;
-  --red:#8b2020;--red-light:#fdf0f0;
-  --amber:#7a5010;--amber-light:#fdf6e8;
-  --purple:#5a2d7a;--purple-light:#f3eef8;
-  --text:#1a2e2e;--text-mid:#3d5c5c;--text-light:#7a9a9a;
+  --text:#1a1a1a;--text-mid:#333333;
   --border:#c8e0e0;--white:#ffffff;
   --shadow-sm:0 1px 4px rgba(26,74,74,0.07);
   --shadow:0 3px 14px rgba(26,74,74,0.09);
 }
-body{font-family:'Outfit',sans-serif;background:var(--white);color:#1a1a1a;font-size:14px;line-height:1.65;padding:20px 24px 32px;}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);font-size:14px;line-height:1.65;padding:20px 24px 32px;}
 
-/* SECTION */
-.section{background:var(--white);border:2px solid var(--teal);border-radius:8px;overflow:hidden;margin-bottom:24px;}
-.section-head{background:var(--teal-dark);color:white;padding:10px 16px;}
+/* SECTIONS */
+.section{border-radius:8px;overflow:hidden;margin-bottom:24px;border:2px solid;}
+.section-head{padding:11px 16px;color:white;}
 .section-head h2{font-size:14px;font-weight:700;}
-.section-head p{font-size:11px;color:rgba(255,255,255,0.7);margin-top:2px;}
-.section-body{padding:14px 16px;}
+.section-head p{font-size:11px;color:rgba(255,255,255,0.75);margin-top:2px;}
+.section-body{padding:14px 16px;background:white;}
+
+/* SHORT TERM - teal */
+.st{border-color:#2a8a8a;}
+.st .section-head{background:#1d6666;}
+.st .step-num{background:#b8ddd5;color:#1a3a30;}
+.st .badge{background:#eef6f3;color:#1a4a3a;border:1px solid #a8d8d0;}
+.st .consider{background:#f2faf8;border:1px solid #c0e0d8;}
+.st .consider-title{color:#1d6666;}
+.st .consider-item::before{color:#2a8a8a;}
+
+/* LONG TERM - amber */
+.lt{border-color:#c8952a;}
+.lt .section-head{background:#a07020;}
+.lt .step-num{background:#f0d898;color:#4a3000;}
+.lt .badge{background:#fdf8e8;color:#4a3000;border:1px solid #e0c888;}
+.lt .consider{background:#fdf9ee;border:1px solid #e8d8a0;}
+.lt .consider-title{color:#a07020;}
+.lt .consider-item::before{color:#c8952a;}
+
+/* WELFARE - blue */
+.wl{border-color:#4a7ab8;}
+.wl .section-head{background:#3a6090;}
+
+/* WELFARE SUB ITEMS - 3 shades */
+.num-welfare{background:#c8ddf0;color:#1a2a40;}
+.num-mat{background:#a0bedd;color:#1a2a40;}
+.num-awol{background:#7898c0;color:#1a2a40;}
+.badge-wl{background:#eef2fa;color:#1a2a40;border:1px solid #a8c0e0;}
 
 /* STEPS */
-.step{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid var(--teal-xlight);align-items:flex-start;}
+.step{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid #f2f2f2;align-items:flex-start;}
 .step:last-child{border-bottom:none;}
-.step-num{width:30px;height:30px;min-width:30px;border-radius:50%;color:#1a2e2e;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
-.step-content strong{display:block;font-size:14px;font-weight:700;color:#1a1a1a;margin-bottom:4px;}
-.step-content p{font-size:13px;color:#1a1a1a;line-height:1.6;}
+.step-num{width:30px;height:30px;min-width:30px;border-radius:50%;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
+.step-content strong{display:block;font-size:13px;font-weight:700;color:#1a1a1a;margin-bottom:3px;}
+.step-content p{font-size:13px;color:#333;line-height:1.55;}
 .badge{display:inline-flex;font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;margin-top:5px;}
-.badge-amber{background:#eef6f3;color:#1a3a30;border:1px solid #8ec4b8;}
-.badge-red{background:#eef6f3;color:#1a3a30;border:1px solid #8ec4b8;}
-.badge-teal{background:#eef6f3;color:#1a3a30;border:1px solid #8ec4b8;}
-
-/* DIVIDER */
-.divider{height:1px;background:var(--border);margin:10px 0;}
 
 /* CONSIDER BOX */
-.consider-box{background:#eef5f3;border:1px solid #c8ddd8;border-radius:8px;padding:12px 14px;margin-top:14px;}
-.consider-title{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:#1a3a30;margin-bottom:8px;font-weight:700;}
+.consider{border-radius:8px;padding:12px 14px;margin-top:14px;}
+.consider-title{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
 .consider-list{list-style:none;}
-.consider-list li{font-size:13px;color:#1a1a1a;padding:5px 0 5px 16px;position:relative;border-bottom:1px solid var(--border);line-height:1.4;}
+.consider-list li{font-size:13px;color:#333;padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(0,0,0,0.08);line-height:1.4;}
 .consider-list li:last-child{border-bottom:none;}
-.consider-list li::before{content:'?';position:absolute;left:0;top:4px;font-size:11px;color:var(--teal);font-weight:700;}
+.consider-item::before{content:'?';position:absolute;left:0;top:4px;font-size:11px;font-weight:700;}
+
+/* DIVIDER */
+.divider{height:1px;background:#e8e8e8;margin:8px 0;}
 </style>
 </head>
 <body>
 
 <!-- SHORT TERM -->
-<div class="section">
+<div class="section st">
   <div class="section-head">
     <h2>Short term absence</h2>
     <p>Triggered at 3 absences in a rolling 6-month period, or a noticeable pattern</p>
   </div>
   <div class="section-body">
     <div class="step">
-      <div class="step-num" style="background:#b8ddd5;">1</div>
+      <div class="step-num st">1</div>
       <div class="step-content">
         <strong>First absence review meeting</strong>
         <p>Discuss reasons for absence, any underlying factors and what support may be needed. Outcome confirmed in writing within 14 days.</p>
-        <span class="badge badge-amber">First absence warning — live 6 months</span>
+        <span class="badge st">First absence warning — live 6 months</span>
       </div>
     </div>
     <div class="step">
-      <div class="step-num" style="background:#8ec4b8;">2</div>
+      <div class="step-num st">2</div>
       <div class="step-content">
         <strong>Second absence review meeting</strong>
         <p>Further absence while the first warning is active. Follow the same process. When considering the reasoning behind the absence, is Occupational Health an appropriate next step? Outcome confirmed in writing within 14 days.</p>
-        <span class="badge badge-amber">Second absence warning — live 9 months</span>
+        <span class="badge st">Second absence warning — live 9 months</span>
       </div>
     </div>
     <div class="step">
-      <div class="step-num" style="background:#5ea89a;">3</div>
+      <div class="step-num st">3</div>
       <div class="step-content">
         <strong>Third absence review meeting</strong>
         <p>Further absence while the second warning is active. Advise in writing that a possible outcome is a final warning or dismissal.</p>
-        <span class="badge badge-red">Final warning (12 months) or dismissal</span>
+        <span class="badge st">Final warning (12 months) or dismissal</span>
       </div>
     </div>
-    <div class="consider-box">
-      <div class="consider-title">Things to consider before delivering an outcome</div>
+    <div class="consider st">
+      <div class="consider-title st">Things to consider before delivering an outcome</div>
       <ul class="consider-list">
-        <li>Is there an underlying medical condition contributing to the absence?</li>
-        <li>Consider whether the Equality Act may apply</li>
-        <li>Have reasonable adjustments been discussed and explored?</li>
-        <li>Is there a pattern that could suggest a work-related cause?</li>
-        <li>When considering the reasoning behind the absence, is Occupational Health an appropriate next step?</li>
-        <li>Has the Employee Assistance Programme (EAP) been offered?</li>
-        <li>Has the colleague been given a genuine opportunity to improve?</li>
+        <li class="consider-item" style="--c:#2a8a8a;">Is there an underlying medical condition contributing to the absence?</li>
+        <li class="consider-item" style="--c:#2a8a8a;">Consider whether the Equality Act may apply</li>
+        <li class="consider-item" style="--c:#2a8a8a;">Have reasonable adjustments been discussed and explored?</li>
+        <li class="consider-item" style="--c:#2a8a8a;">Is there a pattern that could suggest a work-related cause?</li>
+        <li class="consider-item" style="--c:#2a8a8a;">When considering the reasoning behind the absence, is Occupational Health an appropriate next step?</li>
+        <li class="consider-item" style="--c:#2a8a8a;">Has the Employee Assistance Programme (EAP) been offered?</li>
+        <li class="consider-item" style="--c:#2a8a8a;">Has the colleague been given a genuine opportunity to improve?</li>
       </ul>
     </div>
   </div>
 </div>
 
 <!-- LONG TERM -->
-<div class="section">
+<div class="section lt">
   <div class="section-head">
     <h2>Long term absence</h2>
     <p>Absences of 4 weeks or more — arrange a review and keep in regular contact throughout</p>
   </div>
   <div class="section-body">
     <div class="step">
-      <div class="step-num" style="background:#b8ddd5;">1</div>
+      <div class="step-num lt">1</div>
       <div class="step-content">
         <strong>Initial review at 4 weeks</strong>
-        <p>Arrange a review meeting to discuss health, support available and reasonable adjustments. Consider an Occupational Health referral. Keep in regular contact throughout the absence.</p>
-        <span class="badge badge-teal">Keep in regular contact throughout</span>
+        <p>Arrange a review meeting to discuss health, support available and reasonable adjustments. Keep in regular contact throughout the absence.</p>
+        <span class="badge lt">Keep in regular contact throughout</span>
       </div>
     </div>
     <div class="step">
-      <div class="step-num" style="background:#8ec4b8;">2</div>
+      <div class="step-num lt">2</div>
       <div class="step-content">
         <strong>Ongoing review meetings</strong>
         <p>No fixed timescales — arrange after OH reports or GP updates. At each meeting discuss health progress, adjustments, OH report findings and return to work plans.</p>
       </div>
     </div>
     <div class="step">
-      <div class="step-num" style="background:#5ea89a;">3</div>
+      <div class="step-num lt">3</div>
       <div class="step-content">
         <strong>Formal review meeting</strong>
         <p>If return within a reasonable timeframe looks unlikely, arrange a formal meeting. The outcome may be dismissal on the grounds of capability.</p>
-        <span class="badge badge-red">Confirm outcome in writing with appeal rights</span>
+        <span class="badge lt">Confirm outcome in writing with appeal rights</span>
       </div>
     </div>
-    <div class="consider-box">
-      <div class="consider-title">Things to consider before moving to capability</div>
+    <div class="consider lt">
+      <div class="consider-title lt">Things to consider before moving to capability</div>
       <ul class="consider-list">
-        <li>When considering the reasoning behind the absence, is Occupational Health an appropriate next step?</li>
-        <li>Has the Employee Assistance Programme (EAP) been offered?</li>
-        <li>Consider whether the Equality Act may apply</li>
-        <li>Have all reasonable adjustments been fully explored?</li>
-        <li>Has a phased return to work been considered?</li>
-
-        <li>Has the colleague been kept regularly informed throughout?</li>
+        <li class="consider-item" style="color:#333;">When considering the reasoning behind the absence, is Occupational Health an appropriate next step?</li>
+        <li class="consider-item" style="color:#333;">Consider whether the Equality Act may apply</li>
+        <li class="consider-item" style="color:#333;">Have all reasonable adjustments been fully explored?</li>
+        <li class="consider-item" style="color:#333;">Has a phased return to work been considered?</li>
+        <li class="consider-item" style="color:#333;">Has the Employee Assistance Programme (EAP) been offered?</li>
+        <li class="consider-item" style="color:#333;">Has the colleague been kept regularly informed throughout?</li>
       </ul>
     </div>
   </div>
 </div>
 
-<!-- WELFARE / OTHER -->
-<div class="section">
+<!-- WELFARE -->
+<div class="section wl">
   <div class="section-head">
     <h2>Welfare, maternity &amp; unauthorised absence</h2>
     <p>Keeping in contact, managing non-return and non-attendance</p>
   </div>
   <div class="section-body">
     <div class="step">
-      <div class="step-num" style="background:#b8ddd5;">✓</div>
+      <div class="step-num num-welfare">✓</div>
       <div class="step-content">
         <strong>Welfare checks</strong>
         <p>Agree contact frequency at the first call in. Contact the colleague the day before a fit note expires. Document all welfare contact made throughout the absence.</p>
@@ -160,7 +180,7 @@ body{font-family:'Outfit',sans-serif;background:var(--white);color:#1a1a1a;font-
     </div>
     <div class="divider"></div>
     <div class="step">
-      <div class="step-num" style="background:#8ec4b8;">M</div>
+      <div class="step-num num-mat">M</div>
       <div class="step-content">
         <strong>Maternity non-return</strong>
         <p>If a colleague does not return on their agreed date, contact them as soon as possible. Send the non-return letter and allow a reasonable period for a response.</p>
@@ -168,11 +188,11 @@ body{font-family:'Outfit',sans-serif;background:var(--white);color:#1a1a1a;font-
     </div>
     <div class="divider"></div>
     <div class="step">
-      <div class="step-num" style="background:#5ea89a;">!</div>
+      <div class="step-num num-awol">!</div>
       <div class="step-content">
         <strong>Unauthorised absence</strong>
         <p>If no contact by the correct method, treat the absence as unauthorised. Attempt contact by phone, then try the emergency contact. Document all attempts and times.</p>
-        <span class="badge badge-red">May result in disciplinary action</span>
+        <span class="badge badge-wl">May result in disciplinary action</span>
       </div>
     </div>
   </div>
