@@ -9,46 +9,48 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --teal:#2a8a8a;--teal-dark:#1d6666;
-  --teal-light:#e4f4f4;--teal-xlight:#f2fafa;
-  --text:#1a1a1a;--text-mid:#333333;
+  --teal-xlight:#f2fafa;
+  --text:#1a1a1a;
   --border:#c8e0e0;--white:#ffffff;
-  --shadow-sm:0 1px 4px rgba(26,74,74,0.07);
   --shadow:0 3px 14px rgba(26,74,74,0.09);
 }
 body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);font-size:14px;line-height:1.65;padding:20px 24px 32px;}
 
-/* QUICK FACTS */
-.quick-facts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:22px;}
-.qf{background:var(--teal-xlight);border:1.5px solid var(--teal);border-radius:8px;padding:12px 14px;}
-.qf.warn{background:#fdf8ee;border-color:#c8952a;}
-.qf-label{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;color:var(--teal-dark);margin-bottom:4px;}
-.qf.warn .qf-label{color:#a07020;}
-.qf-value{font-size:18px;font-weight:700;color:var(--text);line-height:1.2;}
-.qf-sub{font-size:11px;color:#555;margin-top:3px;}
+/* ── SHARED TAB STRUCTURE ── */
+.tab-block{margin-bottom:24px;}
+.tab-btns{display:grid;gap:10px;}
+.tab-btns-2{grid-template-columns:1fr 1fr;}
 
-/* TABS */
-.tab-btns{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:10px;}
-.tab-btn{padding:12px 14px;border-radius:9px 9px 0 0;border:2px solid var(--teal);border-bottom:none;background:white;cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px;font-family:'Outfit',sans-serif;transition:background 0.15s;}
+.tab-btn{padding:11px 14px;border-radius:9px 9px 0 0;border:2px solid var(--border);border-bottom:none;background:white;cursor:pointer;text-align:left;display:flex;align-items:center;gap:10px;font-family:'Outfit',sans-serif;transition:background 0.15s;}
 .tab-btn:hover{background:var(--teal-xlight);}
-.tab-btn.active{background:var(--teal-dark);border-color:var(--teal-dark);}
-.tab-btn.active-cap{background:#803050;border-color:#803050;}
 .tab-num{width:26px;height:26px;min-width:26px;border-radius:50%;background:#b8ddd5;color:#1a3a30;font-size:11px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
-.tab-btn.active .tab-num{background:rgba(255,255,255,0.2);color:white;}
-.tab-btn.active-cap .tab-num{background:rgba(255,255,255,0.2);color:white;}
-.tab-btn.active-cap{background:#803050;border-color:#803050;}
-.cap-tab-num{background:#b8ddd5;color:#1a3a30;}
-.tab-btn.active-cap .cap-tab-num{background:rgba(255,255,255,0.2);color:white;}
 .tab-label strong{display:block;font-size:13px;font-weight:700;color:var(--text);}
-.tab-btn.active .tab-label strong,.tab-btn.active-cap .tab-label strong{color:white;}
 .tab-label span{font-size:11px;color:#888;}
-.tab-btn.active .tab-label span,.tab-btn.active-cap .tab-label span{color:rgba(255,255,255,0.65);}
-.tab-panel-wrap{border:2px solid var(--teal);border-radius:0 0 10px 10px;border-top:none;background:white;box-shadow:var(--shadow);margin-bottom:0;}
-.tab-panel-wrap.cap-wrap{border-color:var(--teal);}
+
+/* active states — border-color intentionally not set here, handled via JS */
+.tab-btn.act-st{background:#1d6666;}
+.tab-btn.act-lt{background:#a07020;}
+.tab-btn.act-cap{background:#a8936a;}
+.tab-btn.act-wf{background:#2a5080;}
+
+.tab-btn.act-st .tab-num,.tab-btn.act-lt .tab-num,
+.tab-btn.act-cap .tab-num,.tab-btn.act-wf .tab-num{background:rgba(255,255,255,0.22);color:white;}
+.tab-btn.act-st .tab-label strong,.tab-btn.act-lt .tab-label strong,
+.tab-btn.act-cap .tab-label strong,.tab-btn.act-wf .tab-label strong{color:white;}
+.tab-btn.act-st .tab-label span,.tab-btn.act-lt .tab-label span,
+.tab-btn.act-cap .tab-label span,.tab-btn.act-wf .tab-label span{color:rgba(255,255,255,0.65);}
+
+.panel-wrap{border:2px solid var(--border);border-radius:0 0 10px 10px;border-top:none;background:white;box-shadow:var(--shadow);}
+.panel-wrap.pw-st{border-color:#1d6666;}
+.panel-wrap.pw-lt{border-color:#a07020;}
+.panel-wrap.pw-cap{border-color:#a8936a;}
+.panel-wrap.pw-wf{border-color:#2a5080;}
+
 .tab-panel{display:none;}
 .tab-panel.active{display:block;animation:fadeIn 0.18s ease;}
-.tab-inner{padding:22px 22px 26px;}
+.tab-inner{padding:20px 22px 24px;}
 
-/* STEPS */
+/* ── STEPS ── */
 .step{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid #f2f2f2;align-items:flex-start;}
 .step:last-child{border-bottom:none;}
 .step-num{width:30px;height:30px;min-width:30px;border-radius:50%;font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;}
@@ -56,174 +58,178 @@ body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);f
 .step-content p{font-size:13px;color:#333;line-height:1.55;}
 .badge{display:inline-flex;font-size:10px;font-weight:600;padding:2px 10px;border-radius:20px;margin-top:5px;}
 
-/* CONSIDER */
-.consider{border-radius:8px;padding:14px 16px;margin-top:16px;}
+/* ── CONSIDER ── */
+.consider{border-radius:8px;padding:14px 16px;margin-top:14px;}
 .consider-title{font-size:10px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:8px;}
-.consider-list{list-style:none;}
-.ci{font-size:13px;color:#333;padding:4px 0 4px 16px;position:relative;border-bottom:1px solid rgba(0,0,0,0.07);line-height:1.4;}
+.consider ul{list-style:none;}.cap-consider ul{list-style:none;}
+.ci{font-size:13px;color:#333;padding:4px 0;border-bottom:1px solid rgba(0,0,0,0.07);line-height:1.4;}
 .ci:last-child{border-bottom:none;}
-.ci::before{content:'?';position:absolute;left:0;top:4px;font-size:11px;font-weight:700;opacity:0.4;}
+.ci::before{content:none;}
 
-/* SHORT TERM */
+/* short term */
 .sn{background:#b8ddd5;color:#1a3a30;}
 .sb{background:#eef6f3;color:#1a4a3a;border:1px solid #a8d8d0;}
 .sc{background:#f2faf8;border:1px solid #c0e0d8;}
 .sc .consider-title{color:var(--teal-dark);}
-.sc .ci::before{color:var(--teal);}
 
-/* LONG TERM */
+/* long term */
 .ln{background:#f0d898;color:#4a3000;}
 .lb{background:#fdf8e8;color:#4a3000;border:1px solid #e0c888;}
 .lc{background:#fdf9ee;border:1px solid #e8d8a0;}
 .lc .consider-title{color:#a07020;}
-.lc .ci::before{color:#c8952a;}
 
-/* CAPABILITY */
-.cap-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;}
+/* capability */
+.cap-note{background:#f8f4ee;border:1px solid #e0d8c8;border-radius:8px;padding:11px 14px;margin-bottom:14px;display:flex;gap:10px;align-items:flex-start;}
+.cap-note-text{font-size:13px;color:#5a4020;line-height:1.5;}
+.cap-note-text strong{display:block;font-size:13px;margin-bottom:2px;}
+.cap-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;}
 .cap-card{background:#f8f4ee;border:1px solid #e0d8c8;border-radius:8px;padding:14px 16px;}
-.cap-card-num{width:28px;height:28px;min-width:28px;border-radius:50%;background:#e0d0b8;color:#3a2a10;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
-.cap-card strong{display:block;font-size:13px;font-weight:700;color:var(--text);margin-bottom:4px;}
+.cap-card-num{width:26px;height:26px;border-radius:50%;background:#e0d0b8;color:#3a2a10;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:8px;}
+.cap-card strong{display:block;font-size:13px;font-weight:700;margin-bottom:4px;}
 .cap-card p{font-size:13px;color:#333;line-height:1.5;}
-.cap-consider{background:#f8f4ee;border:1px solid #e0d8c8;border-radius:8px;padding:14px 16px;margin-top:16px;}
-.cap-consider .consider-title{color:#803050;}
-.cap-consider .ci::before{color:#a04060;}
+.cap-consider{background:#f8f4ee;border:1px solid #e0d8c8;border-radius:8px;padding:14px 16px;margin-top:14px;}
+.cap-consider .consider-title{color:#5a4020;}
 
-/* WELFARE */
+/* welfare */
+.wf-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;}
+.wf-col{padding:4px 0;}
+.wf-col+.wf-col{border-left:none;padding-left:0;}
+.wf-step{display:flex;gap:14px;padding:10px 0;border-bottom:1px solid #f2f2f2;align-items:flex-start;}
+.wf-step:last-child{border-bottom:none;}
 .wn1{background:#c8ddf0;color:#1a2a40;}
 .wn2{background:#a0bedd;color:#1a2a40;}
-.wn3{background:#7898c0;color:#1a2a40;}
+.wn3{background:#7898c0;color:#f0f6ff;}
 .wb{background:#eef2fa;color:#1a2a40;border:1px solid #a8c0e0;}
-.w-divider{height:1px;background:#ebebeb;margin:8px 0;}
 
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
 </style>
 </head>
 <body>
 
-<!-- TABS -->
-<div class="tab-btns">
-  <button class="tab-btn active" onclick="showTab('short',this,false)">
-    <div class="tab-num">1</div>
-    <div class="tab-label"><strong>Short term</strong><span>Under 4 weeks</span></div>
-  </button>
-  <button class="tab-btn" onclick="showTab('long',this,false)">
-    <div class="tab-num">2</div>
-    <div class="tab-label"><strong>Long term</strong><span>4 weeks or more</span></div>
-  </button>
-  <button class="tab-btn" onclick="showTab('cap',this,true)">
-    <div class="tab-num cap-tab-num">3</div>
-    <div class="tab-label"><strong>Capability</strong><span>When return looks unlikely</span></div>
-  </button>
-  <button class="tab-btn" onclick="showTab('welfare',this,false)">
-    <div class="tab-num">4</div>
-    <div class="tab-label"><strong>Welfare &amp; other</strong><span>Checks, maternity, AWOL</span></div>
-  </button>
-</div>
-
-<div class="tab-panel-wrap" id="panel-wrap">
-
-  <!-- SHORT TERM -->
-  <div class="tab-panel active" id="tab-short">
-    <div class="tab-inner">
-      <div class="step"><div class="step-num sn">1</div><div class="step-content"><strong>First absence review meeting</strong><p>Discuss reasons for absence, any underlying factors and what support may be needed. Outcome confirmed in writing within 14 days.</p><span class="badge sb">First absence warning live 6 months</span></div></div>
-      <div class="step"><div class="step-num sn">2</div><div class="step-content"><strong>Second absence review meeting</strong><p>Further absence while the first warning is active. Follow the same process. When considering the reasoning behind the absence, is Occupational Health an appropriate next step? Outcome confirmed in writing within 14 days.</p><span class="badge sb">Second absence warning live 9 months</span></div></div>
-      <div class="step"><div class="step-num sn">3</div><div class="step-content"><strong>Third absence review meeting</strong><p>Further absence while the second warning is active. Advise in writing that a possible outcome is a final warning or dismissal.</p><span class="badge sb">Final warning (12 months) or dismissal</span></div></div>
-      <div class="consider sc">
-        <div class="consider-title">Things to consider before delivering an outcome</div>
-        <ul class="consider-list">
-          <li class="ci">Is there an underlying medical condition contributing to the absence?</li>
-          <li class="ci">Consider whether the Equality Act may apply</li>
-          <li class="ci">Have reasonable adjustments been discussed and explored?</li>
-          <li class="ci">Is there a pattern that could suggest a work-related cause?</li>
-          <li class="ci">When considering the reasoning behind the absence, is Occupational Health an appropriate next step?</li>
-          <li class="ci">Has the Employee Assistance Programme (EAP) been offered?</li>
-          <li class="ci">Has the colleague been given a genuine opportunity to improve?</li>
-        </ul>
-      </div>
-    </div>
+<!-- ── BOX 1: SHORT TERM + LONG TERM ── -->
+<div class="tab-block">
+  <div class="tab-btns tab-btns-2" id="btns-1">
+    <button class="tab-btn act-st" onclick="showTab('box1','short','st')">
+      <div class="tab-num">1</div>
+      <div class="tab-label"><strong>Short term</strong><span>Under 4 weeks</span></div>
+    </button>
+    <button class="tab-btn" onclick="showTab('box1','long','lt')">
+      <div class="tab-num">2</div>
+      <div class="tab-label"><strong>Long term</strong><span>4 weeks or more</span></div>
+    </button>
   </div>
+  <div class="panel-wrap pw-st" id="wrap-box1">
 
-  <!-- LONG TERM -->
-  <div class="tab-panel" id="tab-long">
-    <div class="tab-inner">
-      <div class="step"><div class="step-num ln">1</div><div class="step-content"><strong>Initial review at 4 weeks</strong><p>Arrange a review meeting to discuss health, support available and reasonable adjustments. Keep in regular contact throughout the absence.</p><span class="badge lb">Keep in regular contact throughout</span></div></div>
-      <div class="step"><div class="step-num ln">2</div><div class="step-content"><strong>Ongoing review meetings</strong><p>Review meetings are held regularly throughout the absence. Timescales depend on the individual's circumstances and medical condition. At each meeting discuss health progress, any adjustments needed, and whether a return to work is realistic.</p></div></div>
-      <div class="step"><div class="step-num ln">3</div><div class="step-content"><strong>Formal review meeting</strong><p>If return within a reasonable timeframe looks unlikely, arrange a formal meeting. The outcome may be dismissal on the grounds of capability.</p><span class="badge lb">Confirm outcome in writing with appeal rights</span></div></div>
-      <div class="consider lc">
-        <div class="consider-title">Things to consider before moving to capability</div>
-        <ul class="consider-list">
-          <li class="ci">When considering the reasoning behind the absence, is Occupational Health an appropriate next step?</li>
-          <li class="ci">Consider whether the Equality Act may apply</li>
-          <li class="ci">Have all reasonable adjustments been fully explored?</li>
-          <li class="ci">Has a phased return to work been considered?</li>
-          <li class="ci">Has the Employee Assistance Programme (EAP) been offered?</li>
-          <li class="ci">Has the colleague been kept regularly informed throughout?</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <!-- CAPABILITY -->
-  <div class="tab-panel" id="tab-cap">
-    <div class="tab-inner">
-      <div style="background:#f8f4ee;border:1px solid #e0d8c8;border-radius:8px;padding:12px 16px;margin-bottom:18px;display:flex;gap:12px;align-items:flex-start;">
-        <div style="font-size:20px;flex-shrink:0;">💬</div>
-        <div>
-          <div style="font-size:13px;font-weight:700;color:#5a4020;margin-bottom:3px;">Thinking about capability action?</div>
-          <div style="font-size:13px;color:#333;line-height:1.55;">Capability is a last resort all other options must have been fully explored first. If you are at this point, please speak to HR before proceeding.</div>
+    <div class="tab-panel active" id="box1-short">
+      <div class="tab-inner">
+        <div class="step"><div class="step-num sn">1</div><div class="step-content"><strong>First absence review meeting</strong><p>Discuss reasons for absence, any underlying factors and what support may be needed. Outcome confirmed in writing within 14 days.</p><span class="badge sb">First absence warning live 6 months</span></div></div>
+        <div class="step"><div class="step-num sn">2</div><div class="step-content"><strong>Second absence review meeting</strong><p>Further absence while the first warning is active. Follow the same process. When considering the reasoning behind the absence, is Occupational Health an appropriate next step? Outcome confirmed in writing within 14 days.</p><span class="badge sb">Second absence warning live 9 months</span></div></div>
+        <div class="step"><div class="step-num sn">3</div><div class="step-content"><strong>Third absence review meeting</strong><p>Further absence while the second warning is active. Advise in writing that a possible outcome is a final warning or dismissal.</p><span class="badge sb">Final warning (12 months) or dismissal</span></div></div>
+        <div class="consider sc">
+          <div class="consider-title">Things to consider before delivering an outcome</div>
+          <ul>
+            <li class="ci">Is there an underlying medical condition contributing to the absence?</li>
+            <li class="ci">Consider whether the Equality Act may apply</li>
+            <li class="ci">Have reasonable adjustments been discussed and explored?</li>
+            <li class="ci">Is there a pattern that could suggest a work-related cause?</li>
+            <li class="ci">When considering the reasoning behind the absence, is Occupational Health an appropriate next step?</li>
+            <li class="ci">Has the Employee Assistance Programme (EAP) been offered?</li>
+            <li class="ci">Has the colleague been given a genuine opportunity to improve?</li>
+          </ul>
         </div>
       </div>
-      <div class="cap-cards">
-        <div class="cap-card"><div class="cap-card-num">1</div><strong>When capability applies</strong><p>If after a prolonged period it looks unlikely the colleague will return within a reasonable timeframe, or if the colleague has had previous long-term absences and has been unable to remain in work.</p></div>
-        <div class="cap-card"><div class="cap-card-num">2</div><strong>Before proceeding</strong><p>All reasonable adjustments and support options must have been fully explored. An OH report should have been obtained where appropriate. The colleague should have been kept regularly informed throughout.</p></div>
-        <div class="cap-card"><div class="cap-card-num">3</div><strong>Formal capability meeting</strong><p>Invite in writing stating that dismissal on grounds of capability is a possible outcome. The outcome is confirmed in writing. The colleague has the right to appeal within 7 days, heard by a different manager within 14 days.</p></div>
-      </div>
-      <div class="cap-consider">
-        <div class="consider-title" style="color:#5a4020;">Things to consider</div>
-        <ul class="consider-list">
-          <li class="ci">Consider whether the Equality Act may apply</li>
-          <li class="ci">Have all reasonable adjustments been fully explored?</li>
-          <li class="ci">Has a phased return been considered?</li>
-          <li class="ci">Has an OH report been obtained and considered?</li>
-          <li class="ci">Has the EAP been offered?</li>
-        </ul>
+    </div>
+
+    <div class="tab-panel" id="box1-long">
+      <div class="tab-inner">
+        <div class="step"><div class="step-num ln">1</div><div class="step-content"><strong>Initial review at 4 weeks</strong><p>Arrange a review meeting to discuss health, support available and reasonable adjustments. Keep in regular contact throughout the absence.</p><span class="badge lb">Keep in regular contact throughout</span></div></div>
+        <div class="step"><div class="step-num ln">2</div><div class="step-content"><strong>Ongoing review meetings</strong><p>Review meetings held regularly throughout the absence. Timescales depend on individual circumstances. At each meeting discuss health progress, adjustments needed and whether a return to work is realistic.</p></div></div>
+        <div class="step"><div class="step-num ln">3</div><div class="step-content"><strong>Formal review meeting</strong><p>If return within a reasonable timeframe looks unlikely, arrange a formal meeting. The outcome may be dismissal on the grounds of capability.</p><span class="badge lb">Confirm outcome in writing with appeal rights</span></div></div>
+        <div class="consider lc">
+          <div class="consider-title">Things to consider before moving to capability</div>
+          <ul>
+            <li class="ci">Is Occupational Health an appropriate next step?</li>
+            <li class="ci">Consider whether the Equality Act may apply</li>
+            <li class="ci">Have all reasonable adjustments been fully explored?</li>
+            <li class="ci">Has a phased return to work been considered?</li>
+            <li class="ci">Has the Employee Assistance Programme (EAP) been offered?</li>
+            <li class="ci">Has the colleague been kept regularly informed throughout?</li>
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- WELFARE -->
-  <div class="tab-panel" id="tab-welfare">
-    <div class="tab-inner">
-      <div class="step"><div class="step-num wn1">✓</div><div class="step-content"><strong>Welfare checks</strong><p>Agree contact frequency at the first call in. Contact the colleague the day before a fit note expires. Document all welfare contact made throughout the absence.</p></div></div>
-      <div class="w-divider"></div>
-      <div class="step"><div class="step-num wn2">M</div><div class="step-content"><strong>Maternity non-return</strong><p>If a colleague does not return on their agreed date, contact them as soon as possible. Send the non-return letter and allow a reasonable period for a response.</p></div></div>
-      <div class="w-divider"></div>
-      <div class="step"><div class="step-num wn3">!</div><div class="step-content"><strong>Unauthorised absence</strong><p>If no contact by the correct method, treat the absence as unauthorised. Attempt contact by phone, then try the emergency contact. Document all attempts and times.</p><span class="badge wb">May result in disciplinary action</span></div></div>
+  </div>
+</div>
+
+<!-- ── BOX 2: CAPABILITY + WELFARE ── -->
+<div class="tab-block">
+  <div class="tab-btns tab-btns-2" id="btns-2">
+    <button class="tab-btn act-cap" onclick="showTab('box2','cap','cap')">
+      <div class="tab-num">3</div>
+      <div class="tab-label"><strong>Capability</strong><span>When return looks unlikely</span></div>
+    </button>
+    <button class="tab-btn" onclick="showTab('box2','welfare','wf')">
+      <div class="tab-num">4</div>
+      <div class="tab-label"><strong>Welfare &amp; other</strong><span>Checks, maternity, AWOL</span></div>
+    </button>
+  </div>
+  <div class="panel-wrap pw-cap" id="wrap-box2">
+
+    <div class="tab-panel active" id="box2-cap">
+      <div class="tab-inner">
+        <div class="cap-note">
+          <div style="font-size:20px;flex-shrink:0;">💬</div>
+          <div class="cap-note-text"><strong>Thinking about capability action?</strong>Capability is a last resort. All other options must have been fully explored first. Please speak to HR before proceeding.</div>
+        </div>
+        <div class="cap-cards">
+          <div class="cap-card"><div class="cap-card-num">1</div><strong>When capability applies</strong><p>If after a prolonged period return in a reasonable timeframe looks unlikely, or if the colleague has had previous long-term absences and has been unable to remain in work.</p></div>
+          <div class="cap-card"><div class="cap-card-num">2</div><strong>Before proceeding</strong><p>All reasonable adjustments must have been fully explored. An OH report should have been obtained where appropriate. The colleague should have been kept regularly informed.</p></div>
+          <div class="cap-card"><div class="cap-card-num">3</div><strong>Formal capability meeting</strong><p>Invite in writing stating dismissal on grounds of capability is a possible outcome. Outcome confirmed in writing. Right to appeal within 7 days, heard by a different manager within 14 days.</p></div>
+        </div>
+        <div class="cap-consider">
+          <div class="consider-title">Things to consider</div>
+          <ul>
+            <li class="ci">Consider whether the Equality Act may apply</li>
+            <li class="ci">Have all reasonable adjustments been fully explored?</li>
+            <li class="ci">Has a phased return been considered?</li>
+            <li class="ci">Has an OH report been obtained and considered?</li>
+            <li class="ci">Has the EAP been offered?</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
 
+    <div class="tab-panel" id="box2-welfare">
+      <div class="tab-inner">
+        <div class="step"><div class="step-num wn1">✓</div><div class="step-content"><strong>Welfare checks</strong><p>Agree contact frequency at the first call in. Contact the colleague the day before a fit note expires. Document all welfare contact made throughout the absence.</p></div></div>
+        <div class="step"><div class="step-num wn2">M</div><div class="step-content"><strong>Maternity non-return</strong><p>If a colleague does not return on their agreed date, contact them as soon as possible. Send the non-return letter and allow a reasonable period for a response.</p></div></div>
+        <div class="step"><div class="step-num wn3">!</div><div class="step-content"><strong>Unauthorised absence</strong><p>If no contact by the correct method, treat the absence as unauthorised. Attempt contact by phone, then try the emergency contact. Document all attempts and times.</p><span class="badge wb">May result in disciplinary action</span></div></div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <script>
-function showTab(id, btn, isCap) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.tab-btn').forEach(b => {
-    b.classList.remove('active');
-    
-  });
-  document.getElementById('tab-' + id).classList.add('active');
-  if(isCap) {
-    btn.classList.add('active');
-    document.getElementById('panel-wrap').classList.add('cap-wrap');
-  } else {
-    btn.classList.add('active');
-    document.getElementById('panel-wrap').classList.remove('cap-wrap');
-  }
-}
-</script>
-</body>
-</html>
-</div>
+const colours = {st:'#1d6666',lt:'#a07020',cap:'#a8936a',wf:'#2a5080'};
 
+function showTab(box, panel, type) {
+  document.querySelectorAll('[id^="' + box + '-"]').forEach(p => p.classList.remove('active'));
+  const btnGroup = box === 'box1' ? 'btns-1' : 'btns-2';
+  document.getElementById(btnGroup).querySelectorAll('.tab-btn').forEach(b => {
+    b.classList.remove('act-st','act-lt','act-cap','act-wf');
+    b.style.borderColor = colours[type];
+  });
+  document.getElementById(box + '-' + panel).classList.add('active');
+  event.currentTarget.classList.add('act-' + type);
+  const wrap = document.getElementById('wrap-' + box);
+  wrap.className = 'panel-wrap pw-' + type;
+}
+
+// set initial border colours on page load
+document.querySelectorAll('#btns-1 .tab-btn').forEach(b => b.style.borderColor = colours.st);
+document.querySelectorAll('#btns-2 .tab-btn').forEach(b => b.style.borderColor = colours.cap);
+</script>
 </body>
 </html>
