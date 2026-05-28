@@ -20,10 +20,10 @@
   --shadow-sm:0 1px 4px rgba(26,74,74,0.07);
   --shadow:0 3px 14px rgba(26,74,74,0.09);
 }
-body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;padding:20px 24px 32px;}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);font-size:15px;line-height:1.6;padding:20px 24px 32px;}
 
 /* FLOWCHART */
-.flow-wrap{background:var(--white);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:22px;}
+.flow-wrap{background:var(--white);border:2px solid var(--teal);border-radius:8px;box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:22px;}
 .flow-header{padding:16px 18px 14px;border-bottom:1px solid var(--border);}
 .flow-header h2{font-size:15px;font-weight:700;color:var(--text);margin-bottom:6px;}
 .flow-principle{font-size:13px;color:var(--text-mid);line-height:1.6;}
@@ -32,7 +32,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font
 .flow-arrows{display:flex;margin-bottom:12px;}
 .fa-step{flex:1;cursor:pointer;transition:filter 0.15s,transform 0.13s;}
 .fa-step:hover{filter:brightness(1.1);transform:translateY(-2px);}
-.fa-arrow{height:50px;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;color:white;text-align:center;line-height:1.3;padding:4px 6px 4px 20px;clip-path:polygon(0 0,calc(100% - 15px) 0,100% 50%,calc(100% - 15px) 100%,0 100%,15px 50%);opacity:0.75;transition:opacity 0.2s;}
+.fa-arrow{height:64px;display:flex;align-items:center;justify-content:center;font-size:11.5px;font-weight:600;color:white;text-align:center;line-height:1.3;padding:4px 6px 4px 20px;clip-path:polygon(0 0,calc(100% - 15px) 0,100% 50%,calc(100% - 15px) 100%,0 100%,15px 50%);opacity:0.75;transition:opacity 0.2s;}
 .fa-step:first-child .fa-arrow{clip-path:polygon(0 0,calc(100% - 15px) 0,100% 50%,calc(100% - 15px) 100%,0 100%);padding-left:12px;}
 .fac1 .fa-arrow{background:#3a7a8a;}
 .fac2 .fa-arrow{background:#2e9080;}
@@ -43,36 +43,9 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font
 .step-detail.active{display:block;}
 .sd-title{font-size:14px;font-weight:700;color:var(--teal-dark);margin-bottom:10px;}
 .sd-list{list-style:none;}
-.sd-list li{font-size:13px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid var(--teal-xlight);line-height:1.45;}
+.sd-list li{font-size:13.5px;color:var(--text-mid);padding:5px 0 5px 14px;position:relative;border-bottom:1px solid var(--teal-xlight);line-height:1.45;}
 .sd-list li:last-child{border-bottom:none;}
 .sd-list li::before{content:'';position:absolute;left:0;top:11px;width:5px;height:5px;background:var(--teal);border-radius:50%;}
-
-/* TABS */
-.tab-buttons{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-.tab-btn{background:var(--white);border:1.5px solid var(--border);border-radius:9px 9px 0 0;border-bottom:none;padding:14px 18px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:13px;transition:background 0.15s;box-shadow:var(--shadow-sm);}
-.tab-btn:hover{background:var(--teal-xlight);border-color:var(--teal);}
-.tab-btn.active{background:var(--teal-dark);border-color:var(--teal-dark);}
-.tb-num{width:30px;height:30px;min-width:30px;border-radius:50%;background:var(--teal-light);color:var(--teal-dark);font-size:13px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:background 0.2s,color 0.2s;}
-.tab-btn.active .tb-num{background:rgba(255,255,255,0.2);color:white;}
-.tb-text strong{display:block;font-size:14px;font-weight:700;color:var(--text);line-height:1.25;}
-.tab-btn.active .tb-text strong{color:white;}
-.tb-text span{font-size:12px;color:var(--text-light);}
-.tab-btn.active .tb-text span{color:rgba(255,255,255,0.62);}
-.tab-panel-wrap{background:var(--white);border:1.5px solid var(--border);border-radius:0 0 10px 10px;border-top:none;box-shadow:var(--shadow);margin-bottom:22px;}
-.tab-panel{display:none;}
-.tab-panel.active{display:block;animation:fadeIn 0.18s ease;}
-.tab-inner{padding:22px 22px 26px;}
-
-/* CHECKLIST */
-.check-progress{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:12px;border-bottom:1px solid var(--border);}
-.check-bar-wrap{flex:1;height:7px;background:var(--teal-xlight);border-radius:4px;overflow:hidden;}
-.check-bar{height:7px;background:var(--teal);border-radius:4px;transition:width 0.3s;}
-.check-count{font-size:12px;color:var(--text-mid);white-space:nowrap;font-weight:600;}
-.check-item{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px solid var(--teal-xlight);cursor:pointer;}
-.check-item:last-child{border-bottom:none;}
-.check-item input{margin-top:3px;accent-color:var(--teal-dark);cursor:pointer;flex-shrink:0;}
-.check-item label{font-size:13px;color:var(--text-mid);cursor:pointer;line-height:1.4;}
-.check-item.done label{text-decoration:line-through;color:var(--text-light);}
 
 /* OUTCOMES */
 .outcomes-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
@@ -92,7 +65,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font
 .oc-duration{font-size:11px;color:var(--text-light);font-style:italic;}
 
 /* APPEAL */
-.appeal-wrap{background:var(--white);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:22px;}
+.appeal-wrap{background:var(--white);border:2px solid var(--teal);border-radius:8px;box-shadow:var(--shadow-sm);overflow:hidden;margin-bottom:22px;}
 .appeal-head{background:var(--teal-dark);color:white;padding:10px 16px;font-size:12px;font-weight:700;}
 .appeal-body{padding:16px 18px;}
 .appeal-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px;}
@@ -101,23 +74,27 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font
 .appeal-text strong{display:block;font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;line-height:1.3;}
 .appeal-text span{font-size:12px;color:var(--text-mid);line-height:1.4;}
 .appeal-outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:12px;}
-.ao-card{border-radius:8px;padding:12px 14px;background:rgba(42,138,138,0.08);border:1px solid rgba(42,138,138,0.2);}
+.ao-card{border-radius:8px;padding:12px 14px;}
 .ao-title{font-size:12px;font-weight:700;margin-bottom:3px;color:var(--text);}
 .ao-desc{font-size:12px;color:var(--text-mid);}
 .appeal-note{background:var(--teal-xlight);border:1px solid var(--border);border-radius:8px;padding:10px 14px;font-size:12px;color:var(--text-mid);line-height:1.55;}
 .appeal-note strong{color:var(--teal-dark);}
 
-/* FAQ */
-.faq-wrap{background:var(--white);border:1px solid var(--border);border-radius:8px;box-shadow:var(--shadow-sm);overflow:hidden;}
-.faq-head{background:var(--teal-dark);color:white;padding:10px 16px;font-size:12px;font-weight:700;}
-.faq-body{padding:0 18px;}
-.faq-item{border-bottom:1px solid var(--teal-xlight);}
-.faq-item:last-child{border-bottom:none;}
-.faq-q{font-size:13px;font-weight:600;color:var(--teal-dark);padding:12px 0;cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;line-height:1.4;}
-.faq-q span{font-size:16px;color:var(--teal);flex-shrink:0;transition:transform 0.2s;margin-top:1px;}
-.faq-item.open .faq-q span{transform:rotate(45deg);}
-.faq-a{display:none;font-size:12.5px;color:var(--text-mid);line-height:1.6;padding-bottom:12px;}
-.faq-item.open .faq-a{display:block;animation:fadeIn 0.16s ease;}
+/* TABS */
+.tab-buttons{display:grid;grid-template-columns:1fr;gap:10px;margin-bottom:0;}
+.tab-btn{background:var(--white);border:2px solid var(--teal);border-radius:9px 9px 0 0;border-bottom:none;padding:13px 16px;cursor:pointer;text-align:left;display:flex;align-items:center;gap:12px;transition:background 0.15s;font-family:'Outfit',sans-serif;}
+.tab-btn:hover{background:var(--teal-xlight);}
+.tab-btn.active{background:var(--teal-dark);border-color:var(--teal-dark);}
+.tb-num{width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--teal-light);color:var(--teal-dark);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.tab-btn.active .tb-num{background:rgba(255,255,255,0.2);color:white;}
+.tb-text strong{display:block;font-size:13px;font-weight:700;color:var(--text);line-height:1.25;}
+.tab-btn.active .tb-text strong{color:white;}
+.tb-text span{font-size:11px;color:var(--text-light);}
+.tab-btn.active .tb-text span{color:rgba(255,255,255,0.62);}
+.tab-panel-wrap{background:var(--white);border:2px solid var(--teal);border-radius:0 0 10px 10px;border-top:none;box-shadow:var(--shadow);margin-bottom:22px;}
+.tab-panel{display:none;}
+.tab-panel.active{display:block;animation:fadeIn 0.18s ease;}
+.tab-inner{padding:20px 22px 24px;}
 
 @keyframes fadeIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
 </style>
@@ -138,7 +115,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font
       <div class="fa-step fac4" onclick="selStep(3)"><div class="fa-arrow">Confirm in writing</div></div>
     </div>
     <div class="step-detail active" id="step-0">
-      <div class="sd-title">Step 1 Prepare and invite</div>
+      <div class="sd-title">Step 1 — Prepare and invite</div>
       <ul class="sd-list">
         <li>Notify the colleague in writing of the allegations and the basis of those allegations</li>
         <li>Include a copy of the disciplinary policy and full evidence pack</li>
@@ -147,18 +124,18 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font
       </ul>
     </div>
     <div class="step-detail" id="step-1">
-      <div class="sd-title">Step 2 Disciplinary hearing</div>
+      <div class="sd-title">Step 2 — Disciplinary hearing</div>
       <ul class="sd-list">
         <li>Chair must be a manager of appropriate seniority</li>
         <li>Go through the allegations and all evidence gathered</li>
         <li>Give the colleague full opportunity to respond and present their own evidence</li>
         <li>Companion may make representations and ask questions but cannot answer on the colleague's behalf</li>
-        <li>Take detailed notes the hearing may be adjourned if further investigation is needed</li>
+        <li>Take detailed notes <em>(the hearing may be adjourned if further investigation is needed)</em></li>
         <li>Decision confirmed in writing usually within one week of the hearing</li>
       </ul>
     </div>
     <div class="step-detail" id="step-2">
-      <div class="sd-title">Step 3 Weigh up and decide</div>
+      <div class="sd-title">Step 3 — Weigh up and decide</div>
       <ul class="sd-list">
         <li>Review all evidence carefully after the hearing</li>
         <li>Consider the colleague's response and any mitigating circumstances</li>
@@ -167,7 +144,7 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font
       </ul>
     </div>
     <div class="step-detail" id="step-3">
-      <div class="sd-title">Step 4 Confirm in writing</div>
+      <div class="sd-title">Step 4 — Confirm in writing</div>
       <ul class="sd-list">
         <li>Confirm decision and reasons in writing usually within one week</li>
         <li>State the nature of the complaint and required standards</li>
@@ -179,146 +156,166 @@ body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--text);font
   </div>
 </div>
 
-<!-- TABS -->
-<div class="tab-buttons">
-  <button class="tab-btn active" onclick="showTab('checklist',this)">
-    <div class="tb-num">1</div>
-    <div class="tb-text"><strong>Before the hearing</strong><span>Checklist to complete before you go in</span></div>
-  </button>
-  <button class="tab-btn" onclick="showTab('outcomes',this)">
-    <div class="tb-num">2</div>
-    <div class="tb-text"><strong>Possible outcomes</strong><span>Sanctions available at each stage</span></div>
-  </button>
-</div>
+<!-- OUTCOMES — FLIP CARDS -->
+<div style="margin-bottom:22px;">
+  <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-light);margin-bottom:10px;">Possible outcomes — click a card to see examples</div>
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:12px;">
 
-<div class="tab-panel-wrap">
-
-  <!-- TAB 1: CHECKLIST -->
-  <div class="tab-panel active" id="tab-checklist">
-    <div class="tab-inner">
-      <div class="check-progress">
-        <div class="check-bar-wrap"><div class="check-bar" id="chk-bar" style="width:0%;"></div></div>
-        <span class="check-count" id="chk-count">0 / 6 complete</span>
-      </div>
-      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Fact find / investigation completed and evidence pack prepared</label></div>
-      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Written invite sent stating the allegations and their basis</label></div>
-      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Policy and evidence pack provided to colleague</label></div>
-      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Reasonable notice given minimum 48 hours</label></div>
-      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Right to companion confirmed in writing</label></div>
-      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>Note taker confirmed and communicated to colleague</label></div>
-    </div>
-  </div>
-
-  <!-- TAB 2: OUTCOMES -->
-  <div class="tab-panel" id="tab-outcomes">
-    <div class="tab-inner">
-      <div class="outcomes-grid">
-        <div class="outcome-card s1">
-          <div class="oc-badge">Stage 1</div>
-          <div class="oc-body">
-            <div class="oc-title">Written warning</div>
-            <div class="oc-desc">For unsatisfactory conduct where improvement is required.</div>
-            <div class="oc-duration">Active for 12 months. Can be skipped if conduct is sufficiently serious.</div>
-          </div>
+    <!-- Written Warning -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front" style="border-top:4px solid #2d7a4f;">
+          <div class="fc-stage" style="color:#2d7a4f;">Stage 1</div>
+          <div class="fc-title">Written warning</div>
+          <div class="fc-desc">Unsatisfactory conduct where improvement is required.</div>
+          <div class="fc-duration">Active 12 months. Stage 1 can be skipped for serious conduct.</div>
+          <div class="fc-hint">Tap to see examples →</div>
         </div>
-        <div class="outcome-card s2">
-          <div class="oc-badge">Stage 2</div>
-          <div class="oc-body">
-            <div class="oc-title">Final written warning</div>
-            <div class="oc-desc">For serious matters or where a written warning is active and standards have not been met.</div>
-            <div class="oc-duration">Active for 12 months. Dismissal will follow if there is further misconduct.</div>
-          </div>
-        </div>
-        <div class="outcome-card s3">
-          <div class="oc-badge">Stage 3</div>
-          <div class="oc-body">
-            <div class="oc-title">Dismissal</div>
-            <div class="oc-desc">Where there is no improvement on a final written warning, or conduct amounts to gross misconduct.</div>
-            <div class="oc-duration">Normally with notice without notice for gross misconduct.</div>
-          </div>
-        </div>
-        <div class="outcome-card s4">
-          <div class="oc-badge">Stage 3 Alternative</div>
-          <div class="oc-body">
-            <div class="oc-title">Alternatives to dismissal</div>
-            <div class="oc-desc">At our discretion where dismissal is not appropriate. Must be authorised by a sufficiently senior manager.</div>
-            <div class="oc-duration">Demotion, transfer, reduction in pay, loss of seniority, suspension without pay.</div>
-          </div>
+        <div class="flip-back" style="border-top:4px solid #2d7a4f;background:#e8f5ed;">
+          <div class="fc-stage" style="color:#2d7a4f;">Examples</div>
+          <ul class="fc-list">
+            <li>Poor timekeeping or persistent lateness</li>
+            <li>Unauthorised absence</li>
+            <li>Failure to perform duties adequately</li>
+            <li>Minor breach of policy or procedure</li>
+          </ul>
+          <div class="fc-hint">Tap to go back ←</div>
         </div>
       </div>
     </div>
-  </div>
 
+    <!-- Final Written Warning -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front" style="border-top:4px solid #1a4f7a;">
+          <div class="fc-stage" style="color:#1a4f7a;">Stage 2</div>
+          <div class="fc-title">Final written warning</div>
+          <div class="fc-desc">Serious matters, or where a written warning is active and standards have not been met.</div>
+          <div class="fc-duration">Active 12 months. Dismissal will follow if there is further misconduct.</div>
+          <div class="fc-hint">Tap to see examples →</div>
+        </div>
+        <div class="flip-back" style="border-top:4px solid #1a4f7a;background:#e8f0f8;">
+          <div class="fc-stage" style="color:#1a4f7a;">Examples</div>
+          <ul class="fc-list">
+            <li>Repeated misconduct while a warning is active</li>
+            <li>Serious insubordination</li>
+            <li>Harassment or bullying not amounting to gross misconduct</li>
+          </ul>
+          <div class="fc-hint">Tap to go back ←</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dismissal -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front" style="border-top:4px solid #8b2020;">
+          <div class="fc-stage" style="color:#8b2020;">Stage 3</div>
+          <div class="fc-title">Dismissal</div>
+          <div class="fc-desc">No improvement on a final warning, or conduct amounts to gross misconduct.</div>
+          <div class="fc-duration">With notice, or without notice for gross misconduct.</div>
+          <div class="fc-hint">Tap to see examples →</div>
+        </div>
+        <div class="flip-back" style="border-top:4px solid #8b2020;background:#fdf0f0;">
+          <div class="fc-stage" style="color:#8b2020;">Gross misconduct examples</div>
+          <ul class="fc-list">
+            <li>Physical violence or aggressive behaviour</li>
+            <li>Theft, fraud or falsification</li>
+            <li>Actions harming the wellbeing of a client</li>
+            <li>Being under the influence of alcohol or drugs at work</li>
+          </ul>
+          <div class="fc-hint">Tap to go back ←</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Alternatives -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-inner">
+        <div class="flip-front" style="border-top:4px solid #5a2d7a;">
+          <div class="fc-stage" style="color:#5a2d7a;">Stage 3 Alternative</div>
+          <div class="fc-title">Alternatives to dismissal</div>
+          <div class="fc-desc">At our discretion where dismissal is not appropriate. Must be authorised by a sufficiently senior manager.</div>
+          <div class="fc-hint">Tap to see examples →</div>
+        </div>
+        <div class="flip-back" style="border-top:4px solid #5a2d7a;background:#f3eef8;">
+          <div class="fc-stage" style="color:#5a2d7a;">When this may apply</div>
+          <ul class="fc-list">
+            <li>Long service, no prior history</li>
+            <li>Genuine remorse shown</li>
+          </ul>
+          <div class="fc-stage" style="color:#5a2d7a;margin-top:16px;">Options available</div>
+          <ul class="fc-list">
+            <li>Demotion or transfer</li>
+            <li>Reduction in pay or loss of seniority</li>
+          </ul>
+          <div class="fc-hint">Tap to go back ←</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </div>
 
 <!-- APPEAL -->
 <div class="appeal-wrap">
   <div class="appeal-head">Appeal process</div>
   <div class="appeal-body">
-    <div class="appeal-steps">
-      <div class="appeal-step">
-        <div class="appeal-num">1</div>
-        <div class="appeal-text">
-          <strong>Submit appeal in writing</strong>
-          <span>Colleague has <strong>5 working days</strong> to appeal in writing, clearly stating the grounds</span>
-        </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:16px;">
+      <div style="padding:14px 16px;border-right:1px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--teal-dark);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">1</div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px;">Submit appeal in writing</div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Within <strong>5 working days</strong> of receiving the outcome. Must clearly state the grounds for appeal.</div>
       </div>
-      <div class="appeal-step">
-        <div class="appeal-num">2</div>
-        <div class="appeal-text">
-          <strong>Appeal hearing arranged</strong>
-          <span>Arranged within <strong>5 working days</strong> of receiving the request. Chaired by a different manager.</span>
-        </div>
+      <div style="padding:14px 16px;border-right:1px solid var(--border);">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--teal-dark);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">2</div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px;">Appeal hearing arranged</div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Within <strong>5 working days</strong> of receiving the request. Chaired by a different manager. Colleague has the right to be accompanied.</div>
       </div>
-      <div class="appeal-step">
-        <div class="appeal-num">3</div>
-        <div class="appeal-text">
-          <strong>Outcome confirmed in writing</strong>
-          <span>Decision confirmed in writing. <strong>There is no further right of appeal.</strong></span>
-        </div>
+      <div style="padding:14px 16px;">
+        <div style="width:28px;height:28px;border-radius:50%;background:var(--teal-dark);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:8px;">3</div>
+        <div style="font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px;">Outcome confirmed in writing</div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Decision confirmed in writing. <strong>There is no further right of appeal.</strong> Date of dismissal is not delayed pending the outcome.</div>
       </div>
     </div>
-    <div class="appeal-outcomes">
-      <div class="ao-card" style="background:rgba(46,144,128,0.12);border:1px solid rgba(46,144,128,0.25);">
-        <div class="ao-title">Decision overruled</div>
-        <div class="ao-desc">Sanction rescinded. No loss of continuity or pay if dismissal is revoked.</div>
+
+    <div style="font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-light);margin-bottom:8px;">Possible appeal outcomes</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:14px;">
+      <div style="background:#c8e8e0;border:1.5px solid #a0ccc0;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">Decision overruled</div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Sanction rescinded. No loss of continuity or pay if dismissal is revoked.</div>
       </div>
-      <div class="ao-card" style="background:rgba(40,168,106,0.12);border:1px solid rgba(40,168,106,0.25);">
-        <div class="ao-title">Decision reduced</div>
-        <div class="ao-desc">Less severe sanction substituted usually where there are extenuating circumstances.</div>
+      <div style="background:#ddf0e8;border:1.5px solid #b8ddd0;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">Decision reduced</div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Less severe sanction substituted. Usually where there are extenuating circumstances.</div>
       </div>
-      <div class="ao-card" style="background:rgba(26,102,68,0.12);border:1px solid rgba(26,102,68,0.25);">
-        <div class="ao-title">Decision upheld</div>
-        <div class="ao-desc">Original sanction confirmed. No further right of appeal.</div>
+      <div style="background:#eef8f4;border:1.5px solid #c8e8e0;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">Decision upheld</div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Original sanction confirmed. No further right of appeal.</div>
       </div>
     </div>
 
   </div>
 </div>
 
-<!-- FAQ -->
-<div class="faq-wrap">
-  <div class="faq-head">Frequently asked questions</div>
-  <div class="faq-body">
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Who can act as a companion? <span>+</span></div>
-      <div class="faq-a">A work colleague or a full-time official employed by a trade union. The companion can explain and sum up the colleague's case and respond to views expressed, but cannot answer questions on their behalf. You cannot refuse a reasonable request to be accompanied.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">How long does a warning stay on record? <span>+</span></div>
-      <div class="faq-a">Both a written warning and a final written warning normally cease to have effect after 12 months. After this they are spent and should not be taken into account in future proceedings, though a record may remain on the personnel file.</div>
-    </div>
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">What if the colleague fails to attend the hearing? <span>+</span></div>
-      <div class="faq-a">The colleague must make every effort to attend. Failure to attend without good reason may be treated as misconduct in itself. If they are persistently unable to attend, the organisation may make a decision based on the available evidence.</div>
-    </div>
+<style>
+.flip-card{height:280px;perspective:1000px;cursor:pointer;}
+.flip-inner{position:relative;width:100%;height:100%;transition:transform 0.5s;transform-style:preserve-3d;}
+.flip-card.flipped .flip-inner{transform:rotateY(180deg);}
+.flip-front,.flip-back{position:absolute;width:100%;height:100%;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:8px;padding:14px 16px;background:white;border:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden;}
+.flip-back{transform:rotateY(180deg);}
+.fc-stage{font-size:10px;font-weight:700;letter-spacing:0.07em;text-transform:uppercase;margin-bottom:5px;}
+.fc-title{font-size:14px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.3;}
+.fc-desc{font-size:12.5px;color:var(--text-mid);line-height:1.45;margin-bottom:5px;}
+.fc-duration{font-size:12px;color:var(--text-light);font-style:italic;margin-top:auto;}
+.fc-hint{font-size:11px;color:var(--text-light);margin-top:auto;padding-top:6px;}
+.fc-list{list-style:none;flex:1;overflow:hidden;}
+.fc-list li{font-size:12px;color:var(--text-mid);padding:3px 0 3px 10px;position:relative;border-bottom:1px solid rgba(0,0,0,0.06);line-height:1.4;}
+.fc-list li:last-child{border-bottom:none;}
+.fc-list li::before{content:'';position:absolute;left:0;top:8px;width:4px;height:4px;border-radius:50%;background:currentColor;opacity:0.4;}
+</style>
 
-    <div class="faq-item">
-      <div class="faq-q" onclick="toggleFaq(this)">Can Stage 1 be skipped? <span>+</span></div>
-      <div class="faq-a">Yes if the conduct is sufficiently serious, Stage 1 may be skipped and proceed straight to a final written warning at Stage 2. Ensure this is clearly documented.</div>
-    </div>
-  </div>
-</div>
 
 <script>
 function selStep(i){
@@ -330,21 +327,6 @@ function showTab(id,btn){
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+id).classList.add('active');
   btn.classList.add('active');
-}
-function toggleCheck(item){
-  const cb=item.querySelector('input[type="checkbox"]');
-  cb.checked=!cb.checked;
-  item.classList.toggle('done',cb.checked);
-  const items=document.querySelectorAll('.check-item');
-  const done=[...items].filter(i=>i.classList.contains('done')).length;
-  document.getElementById('chk-bar').style.width=Math.round(done/items.length*100)+'%';
-  document.getElementById('chk-count').textContent=done+' / 6 complete';
-}
-function toggleFaq(el){
-  const item=el.parentElement;
-  const wasOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item').forEach(f=>f.classList.remove('open'));
-  if(!wasOpen)item.classList.add('open');
 }
 </script>
 </body>
