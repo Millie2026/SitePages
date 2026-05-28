@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grievance Guidance</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --teal:#2a8a8a;--teal-dark:#1d6666;
+  --teal-light:#e4f4f4;--teal-xlight:#f2fafa;
+  --amber:#7a5010;--amber-light:#fdf6e8;--amber-border:#e8c878;
+  --text:#1a2e2e;--text-mid:#3d5c5c;--text-light:#7a9a9a;
+  --border:#c8e0e0;--white:#ffffff;
+  --shadow-sm:0 1px 4px rgba(26,74,74,0.07);
+  --shadow:0 3px 14px rgba(26,74,74,0.09);
+}
+body{font-family:'Outfit',sans-serif;background:var(--white);color:var(--text);font-size:15px;line-height:1.6;padding:20px 24px 32px;}
+
+/* PRINCIPLE */
+.principle{border:1px solid var(--border);border-radius:10px;background:var(--teal-xlight);padding:14px 18px;margin-bottom:20px;}
+.principle p{font-size:13px;color:var(--text-mid);line-height:1.6;}
+.principle strong{color:var(--teal-dark);}
+
+/* SHARED CARD STYLES */
+.card-grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px;}
+.card-grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px;}
+.card{background:var(--white);border:2px solid var(--border);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);}
+.card-bar{height:8px;}
+.card-body{padding:12px 13px 14px;}
+.card-step{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.07em;margin-bottom:3px;}
+.card-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3;}
+.card-divider{height:1px;background:var(--border);margin-bottom:8px;}
+.card-list{list-style:none;}
+.card-list li{font-size:11.5px;color:var(--text-mid);padding:3px 0 3px 10px;position:relative;border-bottom:1px solid var(--teal-xlight);line-height:1.4;}
+.card-list li:last-child{border-bottom:none;}
+.card-list li::before{content:'';position:absolute;left:0;top:9px;width:4px;height:4px;border-radius:50%;background:var(--teal);}
+
+/* STEP COLOURS */
+.bar-s1{background:#1d6666;} .step-s1{color:#1d6666;}
+.bar-s2{background:#1f7a72;} .step-s2{color:#1f7a72;}
+.bar-s3{background:#2a8a6a;} .step-s3{color:#2a8a6a;}
+.bar-s4{background:#228858;} .step-s4{color:#228858;}
+
+/* OUTCOME COLOURS */
+.bar-green{background:#2d7a4f;} .title-green{color:#2d7a4f;} .dot-green li::before{background:#2d7a4f;}
+.bar-amber{background:#a07020;} .title-amber{color:#a07020;} .dot-amber li::before{background:#a07020;}
+.bar-red{background:#8b2020;} .title-red{color:#8b2020;} .dot-red li::before{background:#8b2020;}
+
+/* SECTION LABEL */
+.section-label{font-size:10px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-light);margin-bottom:10px;}
+
+/* FOOTER CALLOUT */
+.footer-callout{background:var(--amber-light);border:1.5px solid var(--amber-border);border-radius:10px;padding:14px 18px;display:flex;gap:12px;align-items:flex-start;}
+.footer-callout-icon{font-size:20px;flex-shrink:0;}
+.footer-callout strong{display:block;font-size:13px;font-weight:700;color:#5a4020;margin-bottom:3px;}
+.footer-callout p{font-size:13px;color:#5a4020;line-height:1.55;}
+</style>
+</head>
+<body>
+
+<!-- MAIN PROCESS BOX -->
+<div style="background:var(--white);border:2px solid var(--teal);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:20px;">
+  <div style="padding:16px 18px 14px;border-bottom:1px solid var(--border);">
+    <div style="font-size:15px;font-weight:700;color:var(--text);margin-bottom:8px;">Grievance process</div>
+    <p style="font-size:13px;color:var(--text-mid);line-height:1.6;"><strong style="color:var(--teal-dark);">Key principle:</strong> The purpose of the grievance process is to give colleagues a fair and timely way to raise concerns about their work or working environment. Always try to resolve things informally first — formal action should be a last resort.</p>
+  </div>
+  <div style="padding:18px;">
+<!-- STEP CARDS -->
+<div class="card-grid-4">
+
+  <div class="card">
+    <div class="card-bar bar-s1"></div>
+    <div class="card-body">
+      <div class="card-step step-s1">Step 1</div>
+      <div class="card-title">Informal resolution</div>
+      <div class="card-divider"></div>
+      <ul class="card-list">
+        <li>Talk to the colleague promptly and privately</li>
+        <li>Handle confidentially and supportively</li>
+        <li>Document discussions and actions in writing</li>
+        <li>If unresolved, move to formal process</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-bar bar-s2"></div>
+    <div class="card-body">
+      <div class="card-step step-s2">Step 2</div>
+      <div class="card-title">Grievance raised</div>
+      <div class="card-divider"></div>
+      <ul class="card-list">
+        <li>Acknowledge in writing immediately</li>
+        <li>Arrange meeting within 7 calendar days</li>
+        <li>Should normally be raised within 1 month of the issue</li>
+        <li>Confirm right to be accompanied by a colleague or trade union rep</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-bar bar-s3"></div>
+    <div class="card-body">
+      <div class="card-step step-s3">Step 3</div>
+      <div class="card-title">Grievance meeting</div>
+      <div class="card-divider"></div>
+      <ul class="card-list">
+        <li>Give colleague full opportunity to explain their grievance</li>
+        <li>Take detailed notes throughout</li>
+        <li>Copy of notes given to colleague after the meeting</li>
+        <li>May be adjourned if further investigation is needed</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-bar bar-s4"></div>
+    <div class="card-body">
+      <div class="card-step step-s4">Step 4</div>
+      <div class="card-title">Investigation & outcome</div>
+      <div class="card-divider"></div>
+      <ul class="card-list">
+        <li>Carry out any further investigation needed</li>
+        <li>Consider all evidence before deciding</li>
+        <li>Confirm outcome in writing as soon as possible</li>
+        <li>Explain reasons for the decision clearly</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+</div>
+</div>
+
+<!-- OUTCOME ROWS -->
+<div style="font-size:11px;font-weight:700;letter-spacing:0.09em;text-transform:uppercase;color:var(--text-light);margin-bottom:12px;">Possible outcomes</div>
+<div style="display:flex;flex-direction:column;gap:10px;margin-bottom:32px;">
+
+  <div style="display:grid;grid-template-columns:160px 1fr;border:2px solid #a0ccc0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);">
+    <div style="background:#c8e8e0;padding:16px 18px;display:flex;align-items:center;border-right:3px solid #1d6666;">
+      <span style="font-size:13px;font-weight:700;color:#1d6666;">Fully upheld</span>
+    </div>
+    <div style="padding:14px 18px;background:white;">
+      <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;">
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#1d6666;display:block;"></span>Confirm in writing that the grievance is upheld</li>
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#1d6666;display:block;"></span>Set out clearly what action will be taken</li>
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#1d6666;display:block;"></span>Follow up to ensure agreed actions are implemented</li>
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#1d6666;display:block;"></span>Colleague retains right to appeal</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:160px 1fr;border:2px solid #b8ddd0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);">
+    <div style="background:#ddf0e8;padding:16px 18px;display:flex;align-items:center;border-right:3px solid #2a7a6a;">
+      <span style="font-size:13px;font-weight:700;color:#2a7a6a;">Partially upheld</span>
+    </div>
+    <div style="padding:14px 18px;background:white;">
+      <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;">
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#2a7a6a;display:block;"></span>Confirm which elements are upheld and which are not</li>
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#2a7a6a;display:block;"></span>Explain clearly why each element has been decided as it has</li>
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#2a7a6a;display:block;"></span>Set out what action will be taken for upheld elements</li>
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#2a7a6a;display:block;"></span>Colleague retains right to appeal the full outcome</li>
+      </ul>
+    </div>
+  </div>
+
+  <div style="display:grid;grid-template-columns:160px 1fr;border:2px solid #c8e8e0;border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);">
+    <div style="background:#eef8f4;padding:16px 18px;display:flex;align-items:center;border-right:3px solid #2a8a8a;">
+      <span style="font-size:13px;font-weight:700;color:#2a8a8a;">Not upheld</span>
+    </div>
+    <div style="padding:14px 18px;background:white;">
+      <ul style="list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:4px 20px;">
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#2a8a8a;display:block;"></span>Confirm in writing that the grievance is not upheld</li>
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#2a8a8a;display:block;"></span>Explain clearly why there was insufficient evidence</li>
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#2a8a8a;display:block;"></span>Colleague retains right to appeal</li>
+        <li style="font-size:12px;color:#3d5c5c;padding:2px 0 2px 10px;position:relative;line-height:1.4;"><span style="position:absolute;left:0;top:7px;width:4px;height:4px;border-radius:50%;background:#2a8a8a;display:block;"></span>Deliberately untrue allegations may be dealt with under the disciplinary process</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- APPEAL -->
+<div style="background:var(--white);border:2px solid var(--teal);border-radius:10px;overflow:hidden;box-shadow:var(--shadow-sm);margin-bottom:20px;">
+  <div style="background:var(--teal-dark);color:white;padding:10px 16px;font-size:15px;font-weight:700;">Appeal process</div>
+  <div style="padding:16px 18px;">
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px;">
+      <div style="background:#f2fafa;border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--teal-dark);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">1</div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;">Submit appeal in writing</div>
+          <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Within <strong>7 calendar days</strong> of receiving the outcome letter. Must clearly state the grounds for appeal. Longer may be given in exceptional circumstances.</div>
+        </div>
+      </div>
+      <div style="background:#f2fafa;border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--teal-dark);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">2</div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;">Appeal meeting arranged</div>
+          <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Heard by a different manager where possible. Colleague has the right to be accompanied. Rescheduled meetings within <strong>one week</strong> of the original.</div>
+        </div>
+      </div>
+      <div style="background:#f2fafa;border:1px solid var(--border);border-radius:8px;padding:14px;display:flex;gap:12px;align-items:flex-start;">
+        <div style="width:28px;height:28px;min-width:28px;border-radius:50%;background:var(--teal-dark);color:white;font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;">3</div>
+        <div>
+          <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px;">Outcome confirmed in writing</div>
+          <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Decision confirmed in writing. <strong>There is no further right of appeal.</strong> If a grievance raised after leaving Be Caring, it will be investigated but a meeting may not always be held.</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px;">
+      <div style="background:#c8e8e0;border:1.5px solid #a0ccc0;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">Grievance upheld</div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">The original decision will be overruled and the grievance outcome rescinded.</div>
+      </div>
+      <div style="background:#ddf0e8;border:1.5px solid #b8ddd0;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">Grievance partially upheld</div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">Some elements of the grievance are supported. A revised outcome is confirmed in writing.</div>
+      </div>
+      <div style="background:#eef8f4;border:1.5px solid #c8e8e0;border-radius:8px;padding:12px 14px;">
+        <div style="font-size:12px;font-weight:700;color:var(--teal-dark);margin-bottom:4px;">Grievance not upheld</div>
+        <div style="font-size:12px;color:var(--text-mid);line-height:1.5;">The original decision will be upheld and the grievance outcome confirmed. No further right of appeal.</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<div class="footer-callout">
+  <div class="footer-callout-icon">⚠️</div>
+  <div>
+    <strong>Grievance raised during a disciplinary process</strong>
+    <p>If the grievance is unrelated to the disciplinary matter, the disciplinary process continues and another manager handles the grievance separately. If the two matters are connected, you may either deal with them together or pause the disciplinary while the grievance is resolved.</p>
+  </div>
+</div>
+
+</body>
+</html>
